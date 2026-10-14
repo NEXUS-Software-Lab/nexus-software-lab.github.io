@@ -35,7 +35,7 @@ window.NEXUS_DATA = {
       description:"Security dataset for wearable companion mobile applications supporting systematic assessment of mobile and wearable-app security.",
       areas:["Software Security & Privacy","Mobile & Android Security","Empirical Software Engineering"],
       topics:["Wearables","Mobile Security","Android","OWASP MASVS","Privacy","Software Security","Dataset"],
-      paper:"https://karim-elish.github.io/nexus-lab/artifacts/",
+      paper:"https://nexus-software-lab.github.io/artifacts/",
       data:"https://ieee-dataport.org/documents/wearappsec-wearable-mobile-app-security-dataset",
       image:"/images/WearAppSec.png"
     },
@@ -129,23 +129,23 @@ window.NEXUS_DATA = {
   ],
   people: {
     current: [
-      /*{name:"Philipp Schafer",role:"Fulbright Graduate Fellow", photo: "/nexus-lab/assets/img/people/Philipp.png"},*/
-      /*{name:"Johannes Bohme",role:"Fulbright Graduate Fellow", photo: "/nexus-lab/assets/img/people/Johannes.png"},*/
-      {name:"Mohamed Sylla",role:"Master's Student · Fulbright", photo: "/nexus-lab/assets/img/people/Sylla.png"},
-      {name:"Nicholas Carracino",role:"Master's Student", photo: "/nexus-lab/assets/img/people/Nicholas.png"},
-      {name:"Shane Califano",role:"Master's Student", photo: "/nexus-lab/assets/img/people/Shane.png"}, 
-      {name:"William Blaine",role:"Undergraduate · Killam Fellowships / Fulbright", photo: "/nexus-lab/assets/img/people/Will.png"},
-      {name:"Justine Bailey",role:"Undergraduate Researcher", photo: "/nexus-lab/assets/img/people/Justine.png"}
+      /*{name:"Philipp Schafer",role:"Fulbright Graduate Fellow", photo: "/assets/img/people/Philipp.png"},*/
+      /*{name:"Johannes Bohme",role:"Fulbright Graduate Fellow", photo: "/assets/img/people/Johannes.png"},*/
+      {name:"Mohamed Sylla",role:"Master's Student · Fulbright", photo: "/assets/img/people/Sylla.png"},
+      {name:"Nicholas Carracino",role:"Master's Student", photo: "/assets/img/people/Nicholas.png"},
+      {name:"Shane Califano",role:"Master's Student", photo: "/assets/img/people/Shane.png"}, 
+      {name:"William Blaine",role:"Undergraduate · Killam Fellowships / Fulbright", photo: "/assets/img/people/Will.png"},
+      {name:"Justine Bailey",role:"Undergraduate Researcher", photo: "/assets/img/people/Justine.png"}
     ],
     alumni: [
-      {name:"Sebastian Siedler",role:"Master's Student · Fulbright Graduate Fellow", year:"2026", photo: "/nexus-lab/assets/img/people/Sebastian.png"},
-      {name:"Joyce Champie",role:"Master's Student",year:"2026", photo: "/nexus-lab/assets/img/people/Joyce.png"},
-      {name:"Gurjas Chalana",role:"Undergraduate · Killam Fellowships / Fulbright",year:"2026", photo: "/nexus-lab/assets/img/people/Gurjas.png"},
-      {name:"Dennis Carey",role:"Undergraduate Researcher", year:"2026", photo: "/nexus-lab/assets/img/people/student-name.png"},
-      {name:"Nesreen Dalhy",role:"Master's Student",year:"2025", photo: "/nexus-lab/assets/img/people/Nesreen.png"},
-      {name:"Vinicius Seixas",role:"Master's Student",year:"2022", photo: "/nexus-lab/assets/img/people/Vin.png"},
-      {name:"Tito Leadon",role:"Master's Student",year:"2022", photo: "/nexus-lab/assets/img/people/student-name.png"},
-      {name:"William Blanc",role:"Undergraduate Researcher",year:"2021", photo: "/nexus-lab/assets/img/people/William.png"}
+      {name:"Sebastian Siedler",role:"Master's Student · Fulbright Graduate Fellow", year:"2026", photo: "/assets/img/people/Sebastian.png"},
+      {name:"Joyce Champie",role:"Master's Student",year:"2026", photo: "/assets/img/people/Joyce.png"},
+      {name:"Gurjas Chalana",role:"Undergraduate · Killam Fellowships / Fulbright",year:"2026", photo: "/assets/img/people/Gurjas.png"},
+      {name:"Dennis Carey",role:"Undergraduate Researcher", year:"2026", photo: "/assets/img/people/student-name.png"},
+      {name:"Nesreen Dalhy",role:"Master's Student",year:"2025", photo: "/assets/img/people/Nesreen.png"},
+      {name:"Vinicius Seixas",role:"Master's Student",year:"2022", photo: "/assets/img/people/Vin.png"},
+      {name:"Tito Leadon",role:"Master's Student",year:"2022", photo: "/assets/img/people/student-name.png"},
+      {name:"William Blanc",role:"Undergraduate Researcher",year:"2021", photo: "/assets/img/people/William.png"}
     ]
   }
 };
