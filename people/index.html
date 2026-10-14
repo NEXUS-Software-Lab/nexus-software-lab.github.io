@@ -1,0 +1,352 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>People | NEXUS Lab</title>
+<meta name="description" content="People of NEXUS Lab at Florida Polytechnic University.">
+<meta name="theme-color" content="#071d5e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/nexus-lab/assets/css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/nexus-lab/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/nexus-lab/assets/img/favicon.png">
+
+
+<style>
+  /* Current student headshots */
+  .person-photo {
+    width: 170px;
+    height: 170px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #edf4ff, #eaf8f7);
+    border: 1px solid var(--line);
+    margin: 0 auto 18px;
+    position: relative;
+  }
+
+  .person-photo img,
+  .alumni-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .person-photo-placeholder,
+  .alumni-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--navy);
+  }
+
+  .person-photo-placeholder svg {
+    width: 52%;
+    height: 52%;
+    opacity: .55;
+  }
+
+  .person {
+    text-align: center;
+  }
+
+  /* Alumni headshots */
+  .alumni-item {
+    align-items: center;
+  }
+
+  .alumni-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .alumni-photo {
+    width: 124px;
+    height: 124px;
+    flex: 0 0 124px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #edf4ff, #eaf8f7);
+    border: 1px solid var(--line);
+    color: var(--navy);
+    position: relative;
+  }
+
+  .alumni-photo-placeholder svg {
+    width: 50%;
+    height: 50%;
+    opacity: .50;
+  }
+
+  .alumni-info {
+    min-width: 0;
+  }
+
+  @media (max-width: 720px) {
+    .person-photo {
+      width: 130px;
+      height: 130px;
+    }
+
+    .alumni-photo {
+      width: 56px;
+      height: 56px;
+      flex-basis: 56px;
+    }
+  }
+</style>
+
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container nav-wrap">
+<a class="brand" href="/nexus-lab/" aria-label="NEXUS Lab home">
+<img src="/nexus-lab/assets/img/nexus-logo.png" alt="NEXUS Lab — Secure, Trustworthy, and Intelligent Software Engineering">
+</a>
+<button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+<nav class="nav" aria-label="Primary navigation">
+<a class="" href="/nexus-lab/">Home</a>
+<a class="" href="/nexus-lab/research/">Research</a>
+<a class="active" href="/nexus-lab/people/">People</a>
+<a class="" href="/nexus-lab/publications/">Publications</a>
+<a class="" href="/nexus-lab/artifacts/">Research Artifacts</a>
+<a class="" href="/nexus-lab/news/">News</a>
+<a class="" href="/nexus-lab/contact/">Contact</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<div class="breadcrumb">
+<a href="/nexus-lab/">NEXUS Lab</a> / People</div>
+<h1>People</h1>
+<p>NEXUS brings together collaborative research and student mentorship across software security, software engineering, and AI.</p>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="people-director">
+<div class="portrait">
+<img src="/nexus-lab/assets/img/karim-elish.png" alt="Karim Elish">
+</div>
+<div class="bio">
+<p class="eyebrow">Director</p>
+<h2>Karim Elish, Ph.D.</h2>
+<div class="role">Full Professor of Computer Science</div>
+<div class="hero-actions">
+<a class="btn btn-primary" href="https://karim-elish.github.io/" target="_blank" rel="noopener">Website</a>
+<a class="btn btn-secondary" href="https://scholar.google.com/citations?user=DW96hOsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section section-soft">
+<div class="container">
+<div class="section-head">
+<div>
+<p class="eyebrow">Current members</p>
+<h2>Student researchers</h2>
+</div>
+<p>
+</p>
+</div>
+<div id="current-people" class="person-grid">
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head">
+<div>
+<p class="eyebrow">Alumni</p>
+<h2>Former student researchers</h2>
+</div>
+</div>
+<div id="alumni-list" class="alumni-list">
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<img src="/nexus-lab/assets/img/nexus-logo.png" alt="NEXUS Lab">
+<p>Secure, Trustworthy, and Intelligent Software Engineering at Florida Polytechnic University.</p>
+</div>
+<div class="footer-col">
+<h3>Explore</h3>
+<a href="/nexus-lab/research/">Research</a>
+<a href="/nexus-lab/people/">People</a>
+<a href="/nexus-lab/publications/">Publications</a>
+<a href="/nexus-lab/artifacts/">Research Artifacts</a>
+</div>
+<div class="footer-col">
+<h3>Connect</h3>
+<a href="https://karim-elish.github.io/" target="_blank" rel="noopener">Karim Elish</a>
+<a href="https://floridapoly.edu/" target="_blank" rel="noopener">Florida Polytechnic University</a>
+<a href="mailto:kelish@floridapoly.edu">Email the lab</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span data-year>
+</span> NEXUS Lab. Florida Polytechnic University.</span>
+</div>
+</div>
+</footer>
+<script src="/nexus-lab/assets/js/site.js">
+</script>
+<script src="/nexus-lab/assets/js/data.js">
+</script>
+<script>
+  (function () {
+    const d = NEXUS_DATA.people;
+
+    const silhouette = (className) => `
+      <div class="${className}" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <circle
+            cx="32"
+            cy="22"
+            r="12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          />
+          <path
+            d="M12 56c2-12 10-19 20-19s18 7 20 19"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+    `;
+
+    const currentPhoto = (p) => {
+      if (!p.photo) {
+        return silhouette("person-photo-placeholder");
+      }
+
+      return `
+        <img
+          src="${p.photo}"
+          alt="${p.name}"
+          onerror="
+            this.style.display='none';
+            this.nextElementSibling.style.display='grid';
+          "
+        >
+        <div
+          class="person-photo-placeholder"
+          aria-hidden="true"
+          style="display:none"
+        >
+          <svg viewBox="0 0 64 64">
+            <circle
+              cx="32"
+              cy="22"
+              r="12"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+            <path
+              d="M12 56c2-12 10-19 20-19s18 7 20 19"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      `;
+    };
+
+    const alumniPhoto = (p) => {
+      if (!p.photo) {
+        return silhouette("alumni-photo-placeholder");
+      }
+
+      return `
+        <img
+          src="${p.photo}"
+          alt="${p.name}"
+          onerror="
+            this.style.display='none';
+            this.nextElementSibling.style.display='grid';
+          "
+        >
+        <div
+          class="alumni-photo-placeholder"
+          aria-hidden="true"
+          style="display:none"
+        >
+          <svg viewBox="0 0 64 64">
+            <circle
+              cx="32"
+              cy="22"
+              r="12"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+            <path
+              d="M12 56c2-12 10-19 20-19s18 7 20 19"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      `;
+    };
+
+    document.getElementById("current-people").innerHTML = d.current
+      .map((p) => `
+        <article class="person">
+          <div class="person-photo">
+            ${currentPhoto(p)}
+          </div>
+          <h3>${p.name}</h3>
+          <p>${p.role}</p>
+        </article>
+      `)
+      .join("");
+
+    document.getElementById("alumni-list").innerHTML = d.alumni
+      .map((p) => `
+        <div class="alumni-item">
+          <div class="alumni-main">
+            <div class="alumni-photo">
+              ${alumniPhoto(p)}
+            </div>
+
+            <div class="alumni-info">
+              <strong>${p.name}</strong>
+              <div class="note">${p.role}</div>
+            </div>
+          </div>
+
+          <span>${p.year}</span>
+        </div>
+      `)
+      .join("");
+  })();
+</script>
+</body>
+</html>

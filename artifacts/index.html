@@ -1,0 +1,544 @@
+
+
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Research Artifacts | NEXUS Lab</title><meta name="description" content="Research artifacts from NEXUS Lab: datasets and reusable resources for software security, Android security, software analytics, and software engineering research."><meta name="theme-color" content="#071d5e"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/nexus-lab/assets/css/style.css"><link rel="icon" type="image/png" sizes="32x32" href="/nexus-lab/assets/img/favicon.png"><link rel="apple-touch-icon" href="/nexus-lab/assets/img/favicon.png">
+<style>
+  .artifact-tools {
+    margin-top: 30px;
+  }
+
+  .artifact-browse-label {
+    margin: 0 0 10px;
+  }
+
+  .artifact-filter-row {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) 190px 235px 210px auto;
+    gap: 12px;
+    align-items: stretch;
+    margin-bottom: 10px;
+  }
+
+  .artifact-filter-row .search-input {
+    min-height: 48px;
+  }
+
+  .artifact-filter-dropdown {
+    position: relative;
+  }
+
+  .artifact-filter-trigger {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 13px;
+    border: 1px solid #cfdceb;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .artifact-filter-trigger:hover,
+  .artifact-filter-trigger[aria-expanded="true"] {
+    border-color: var(--blue);
+  }
+
+  .artifact-filter-trigger-main {
+    min-width: 0;
+  }
+
+  .artifact-filter-trigger-label {
+    display: block;
+    color: var(--muted);
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .artifact-filter-trigger-value {
+    display: block;
+    color: var(--ink);
+    font-size: .86rem;
+    font-weight: 650;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .artifact-filter-chevron {
+    color: var(--muted);
+    font-size: .78rem;
+    flex: 0 0 auto;
+  }
+
+  .artifact-filter-panel {
+    position: absolute;
+    z-index: 40;
+    top: calc(100% + 8px);
+    right: 0;
+    width: min(440px, 92vw);
+    padding: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 48px rgba(15, 35, 60, .16);
+  }
+
+  .artifact-filter-panel[hidden] {
+    display: none;
+  }
+
+  .artifact-filter-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .artifact-filter-panel-head strong {
+    display: block;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .artifact-filter-panel-head span {
+    color: var(--muted);
+    font-size: .78rem;
+  }
+
+  .artifact-filter-close {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .artifact-filter-find {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cfdceb;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+    margin-bottom: 10px;
+  }
+
+  .artifact-filter-find:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(13, 85, 196, .08);
+  }
+
+  .artifact-filter-list {
+    max-height: 290px;
+    overflow-y: auto;
+    border-top: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+  }
+
+  .artifact-filter-option {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    padding: 9px 4px;
+    border: 0;
+    border-bottom: 1px solid #f0f4f8;
+    background: transparent;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .artifact-filter-option:last-child {
+    border-bottom: 0;
+  }
+
+  .artifact-filter-option:hover {
+    background: #f7fbff;
+  }
+
+  .artifact-filter-check {
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid #b8c8d8;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 800;
+  }
+
+  .artifact-filter-option.active .artifact-filter-check {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  .artifact-filter-option-name {
+    font-size: .84rem;
+    font-weight: 600;
+  }
+
+  .artifact-filter-option-count {
+    color: var(--muted);
+    font-size: .77rem;
+  }
+
+  .artifact-filter-empty {
+    padding: 16px 4px;
+    color: var(--muted);
+    font-size: .82rem;
+  }
+
+  .artifact-filter-panel-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .artifact-filter-clear {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 5px 0;
+  }
+
+  .artifact-filter-done {
+    border: 0;
+    border-radius: 999px;
+    background: var(--navy);
+    color: #fff;
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 14px;
+  }
+
+  .artifact-reset-filters {
+    min-height: 48px;
+    padding: 0 15px;
+    border: 1px solid #d7e2ed;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--navy);
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .artifact-reset-filters:hover:not(:disabled) {
+    border-color: var(--blue);
+  }
+
+  .artifact-reset-filters:disabled {
+    opacity: .42;
+    cursor: default;
+  }
+
+  .artifact-active-filter {
+    min-height: 24px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: .8rem;
+  }
+
+  .artifact-active-filter strong {
+    color: var(--ink);
+  }
+
+  .artifact-top {
+    align-items: flex-start;
+  }
+
+.artifact-visual {
+  width: 104px;
+  height: 104px;
+  flex: 0 0 104px;
+  border: 1px solid #e0e9f2;
+  border-radius: 15px;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.artifact-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+  .artifact-fallback-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--blue);
+  }
+
+  .artifact .card-actions {
+    margin-top: 18px;
+  }
+
+  .artifact-note {
+    margin-top: 24px;
+  }
+
+  @media (max-width: 1180px) {
+    .artifact-filter-row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .artifact-filter-row .search-input {
+      grid-column: 1 / -1;
+    }
+
+    .artifact-reset-filters {
+      grid-column: 1 / -1;
+      justify-self: start;
+      width: auto;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .artifact-filter-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .artifact-filter-row .search-input,
+    .artifact-filter-dropdown,
+    .artifact-reset-filters {
+      grid-column: auto;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .artifact-filter-trigger {
+      min-height: 46px;
+    }
+
+    .artifact-filter-panel {
+      left: 0;
+      right: auto;
+      width: 100%;
+      max-width: none;
+      max-height: 72vh;
+      overflow-y: auto;
+    }
+
+    .artifact-filter-list {
+      max-height: 38vh;
+    }
+
+    .artifact-reset-filters:disabled {
+      display: none;
+    }
+
+    .artifact-active-filter:empty {
+      display: none;
+    }
+
+    .artifact-active-filter {
+      margin-bottom: 14px;
+    }
+
+    .artifact-visual {
+      width: 70px;
+      height: 70px;
+      flex-basis: 70px;
+    }
+  }
+</style>
+</head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-wrap"><a class="brand" href="/nexus-lab/" aria-label="NEXUS Lab home"><img src="/nexus-lab/assets/img/nexus-logo.png" alt="NEXUS Lab — Secure, Trustworthy, and Intelligent Software Engineering"></a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button><nav class="nav" aria-label="Primary navigation"><a class="" href="/nexus-lab/">Home</a><a class="" href="/nexus-lab/research/">Research</a><a class="" href="/nexus-lab/people/">People</a><a class="" href="/nexus-lab/publications/">Publications</a><a class="active" href="/nexus-lab/artifacts/">Research Artifacts</a><a class="" href="/nexus-lab/news/">News</a><a class="" href="/nexus-lab/contact/">Contact</a></nav></div></header><main id="main"><section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/nexus-lab/">NEXUS Lab</a> / Research Artifacts</div><h1>Research Artifacts</h1><p>Datasets and tools from NEXUS Lab — open and reusable for the research community.</p></div></section>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Artifact catalog</p>
+        <h2>Research resources</h2>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="artifact-total">0</strong>
+        <span>current artifacts</span>
+      </div>
+      <div class="stat">
+        <strong id="artifact-datasets">0</strong>
+        <span>datasets</span>
+      </div>
+      <div class="stat">
+        <strong id="artifact-tools">0</strong>
+        <span>tools</span>
+      </div>
+    </div>
+
+    <div class="artifact-tools">
+      <p class="eyebrow artifact-browse-label">Browse by</p>
+
+      <div class="artifact-filter-row">
+        <input
+          id="artifact-search"
+          class="search-input"
+          type="search"
+          placeholder="Search artifacts, papers, authors, topics, or keywords…"
+          aria-label="Search artifacts"
+        >
+
+        <div class="artifact-filter-dropdown">
+          <button
+            id="type-trigger"
+            class="artifact-filter-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="type-panel"
+          >
+            <span class="artifact-filter-trigger-main">
+              <span class="artifact-filter-trigger-label">Artifact type</span>
+              <span id="type-trigger-value" class="artifact-filter-trigger-value">All types</span>
+            </span>
+            <span class="artifact-filter-chevron">▾</span>
+          </button>
+
+          <div id="type-panel" class="artifact-filter-panel" hidden>
+            <div class="artifact-filter-panel-head">
+              <div>
+                <strong>Filter by artifact type</strong>
+                <span id="type-meta"></span>
+              </div>
+              <button id="type-close" class="artifact-filter-close" type="button" aria-label="Close artifact type filter">×</button>
+            </div>
+
+            <div id="type-list" class="artifact-filter-list"></div>
+
+            <div class="artifact-filter-panel-actions">
+              <button id="type-clear" class="artifact-filter-clear" type="button">Clear types</button>
+              <button id="type-done" class="artifact-filter-done" type="button">Done</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="artifact-filter-dropdown">
+          <button
+            id="area-trigger"
+            class="artifact-filter-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="area-panel"
+          >
+            <span class="artifact-filter-trigger-main">
+              <span class="artifact-filter-trigger-label">Research areas</span>
+              <span id="area-trigger-value" class="artifact-filter-trigger-value">All research areas</span>
+            </span>
+            <span class="artifact-filter-chevron">▾</span>
+          </button>
+
+          <div id="area-panel" class="artifact-filter-panel" hidden>
+            <div class="artifact-filter-panel-head">
+              <div>
+                <strong>Filter by research area</strong>
+                <span id="area-meta"></span>
+              </div>
+              <button id="area-close" class="artifact-filter-close" type="button" aria-label="Close research area filter">×</button>
+            </div>
+
+            <input
+              id="area-find"
+              class="artifact-filter-find"
+              type="search"
+              placeholder="Find a research area…"
+              aria-label="Find a research area"
+            >
+
+            <div id="area-list" class="artifact-filter-list"></div>
+
+            <div class="artifact-filter-panel-actions">
+              <button id="area-clear" class="artifact-filter-clear" type="button">Clear areas</button>
+              <button id="area-done" class="artifact-filter-done" type="button">Done</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="artifact-filter-dropdown">
+          <button
+            id="topic-trigger"
+            class="artifact-filter-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="topic-panel"
+          >
+            <span class="artifact-filter-trigger-main">
+              <span class="artifact-filter-trigger-label">Topics</span>
+              <span id="topic-trigger-value" class="artifact-filter-trigger-value">All topics</span>
+            </span>
+            <span class="artifact-filter-chevron">▾</span>
+          </button>
+
+          <div id="topic-panel" class="artifact-filter-panel" hidden>
+            <div class="artifact-filter-panel-head">
+              <div>
+                <strong>Filter by topic</strong>
+                <span id="topic-meta"></span>
+              </div>
+              <button id="topic-close" class="artifact-filter-close" type="button" aria-label="Close topic filter">×</button>
+            </div>
+
+            <input
+              id="topic-find"
+              class="artifact-filter-find"
+              type="search"
+              placeholder="Find a topic…"
+              aria-label="Find a topic"
+            >
+
+            <div id="topic-list" class="artifact-filter-list"></div>
+
+            <div class="artifact-filter-panel-actions">
+              <button id="topic-clear" class="artifact-filter-clear" type="button">Clear topics</button>
+              <button id="topic-done" class="artifact-filter-done" type="button">Done</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="artifact-reset-filters" class="artifact-reset-filters" type="button" disabled>
+          Reset all filters
+        </button>
+      </div>
+
+      <div id="artifact-active-filter" class="artifact-active-filter"></div>
+    </div>
+
+    <div class="catalog-meta">
+      <span id="artifact-count"></span>
+      <span>Sorted by most recent</span>
+    </div>
+
+    <div id="artifact-grid" class="artifact-grid"></div>
+
+    <p class="note artifact-note">
+These artifacts are provided for academic and research purposes. Please cite the corresponding paper when using these resources.</p>
+  </div>
+</section>
+</main><footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="/nexus-lab/assets/img/nexus-logo.png" alt="NEXUS Lab"><p>Secure, Trustworthy, and Intelligent Software Engineering at Florida Polytechnic University.</p></div><div class="footer-col"><h3>Explore</h3><a href="/nexus-lab/research/">Research</a><a href="/nexus-lab/people/">People</a><a href="/nexus-lab/publications/">Publications</a><a href="/nexus-lab/artifacts/">Research Artifacts</a></div><div class="footer-col"><h3>Connect</h3><a href="https://karim-elish.github.io/" target="_blank" rel="noopener">Karim Elish</a><a href="https://floridapoly.edu/" target="_blank" rel="noopener">Florida Polytechnic University</a><a href="mailto:kelish@floridapoly.edu">Email the lab</a></div></div><div class="footer-bottom"><span>© <span data-year></span> NEXUS Lab. Florida Polytechnic University.</span></div></div></footer><script src="/nexus-lab/assets/js/site.js"></script><script src="/nexus-lab/assets/js/data.js?v=20260824-2"></script><script src="/nexus-lab/assets/js/artifacts.js?v=20260824-2"></script></body></html>

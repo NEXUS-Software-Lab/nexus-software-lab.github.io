@@ -1,0 +1,753 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Publications | NEXUS Lab</title>
+<meta name="description" content="Selected NEXUS Lab publications in software security, Android security, malware analysis, software analytics, and AI-assisted software engineering.">
+<meta name="theme-color" content="#071d5e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/nexus-lab/assets/css/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/nexus-lab/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/nexus-lab/assets/img/favicon.png">
+
+
+<style>
+  .publication-tools {
+    margin-top: 8px;
+  }
+
+  .filter-row {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 230px 230px auto;
+    gap: 12px;
+    align-items: stretch;
+    margin: 24px 0 10px;
+  }
+
+  .filter-row .search-input {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .filter-dropdown {
+    position: relative;
+  }
+
+  .filter-trigger {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 13px;
+    border: 1px solid #cfdceb;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .filter-trigger:hover,
+  .filter-trigger[aria-expanded="true"] {
+    border-color: var(--blue);
+  }
+
+  .filter-trigger-main {
+    min-width: 0;
+  }
+
+  .filter-trigger-label {
+    display: block;
+    font-size: .73rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    line-height: 1.1;
+    margin-bottom: 3px;
+  }
+
+  .filter-trigger-value {
+    display: block;
+    font-size: .88rem;
+    font-weight: 650;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .filter-chevron {
+    color: var(--muted);
+    font-size: .8rem;
+    flex: 0 0 auto;
+  }
+
+  .filter-panel {
+    position: absolute;
+    z-index: 40;
+    top: calc(100% + 8px);
+    right: 0;
+    width: min(430px, 92vw);
+    padding: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 48px rgba(15, 35, 60, .16);
+  }
+
+  .filter-panel[hidden] {
+    display: none;
+  }
+
+  .filter-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .filter-panel-head strong {
+    display: block;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .filter-panel-head span {
+    color: var(--muted);
+    font-size: .78rem;
+  }
+
+  .filter-close {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .filter-find {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cfdceb;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+    margin-bottom: 10px;
+  }
+
+  .filter-find:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(13, 85, 196, .08);
+  }
+
+  .filter-list {
+    max-height: 290px;
+    overflow-y: auto;
+    border-top: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+  }
+
+  .filter-option {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    padding: 9px 4px;
+    border: 0;
+    border-bottom: 1px solid #f0f4f8;
+    background: transparent;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .filter-option:last-child {
+    border-bottom: 0;
+  }
+
+  .filter-option:hover {
+    background: #f7fbff;
+  }
+
+  .filter-check {
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid #b8c8d8;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 800;
+  }
+
+  .filter-option.active .filter-check {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  .filter-option-name {
+    font-size: .84rem;
+    font-weight: 600;
+  }
+
+  .filter-option-count {
+    color: var(--muted);
+    font-size: .77rem;
+  }
+
+  .filter-empty {
+    padding: 16px 4px;
+    color: var(--muted);
+    font-size: .82rem;
+  }
+
+  .filter-panel-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .filter-clear {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 5px 0;
+  }
+
+  .filter-done {
+    border: 0;
+    border-radius: 999px;
+    background: var(--navy);
+    color: #fff;
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 14px;
+  }
+
+  .reset-filters {
+    min-height: 48px;
+    padding: 0 15px;
+    border: 1px solid #d7e2ed;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--navy);
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .reset-filters:hover:not(:disabled) {
+    border-color: var(--blue);
+  }
+
+  .reset-filters:disabled {
+    opacity: .42;
+    cursor: default;
+  }
+
+  .active-filter-summary {
+    min-height: 24px;
+    margin-bottom: 22px;
+    color: var(--muted);
+    font-size: .8rem;
+  }
+
+  .active-filter-summary strong {
+    color: var(--ink);
+  }
+
+  .catalog-meta.single {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 1050px) {
+    .filter-row {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .reset-filters {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .filter-row {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-panel {
+      left: 0;
+      right: auto;
+      width: min(100%, 92vw);
+    }
+  }
+</style>
+
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container nav-wrap">
+<a class="brand" href="/nexus-lab/" aria-label="NEXUS Lab home">
+<img src="/nexus-lab/assets/img/nexus-logo.png" alt="NEXUS Lab — Secure, Trustworthy, and Intelligent Software Engineering">
+</a>
+<button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+<nav class="nav" aria-label="Primary navigation">
+<a class="" href="/nexus-lab/">Home</a>
+<a class="" href="/nexus-lab/research/">Research</a>
+<a class="" href="/nexus-lab/people/">People</a>
+<a class="active" href="/nexus-lab/publications/">Publications</a>
+<a class="" href="/nexus-lab/artifacts/">Research Artifacts</a>
+<a class="" href="/nexus-lab/news/">News</a>
+<a class="" href="/nexus-lab/contact/">Contact</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<div class="breadcrumb">
+<a href="/nexus-lab/">NEXUS Lab</a> / Publications</div>
+<h1>Publications</h1>
+<p>Selected publications from NEXUS Lab.</p>
+</div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Publication highlights</p>
+        <h2>Recent and selected publications</h2>
+      </div>
+    </div>
+
+    <div class="publication-tools">
+      <div class="filter-row">
+        <input
+          id="pub-search"
+          class="search-input"
+          type="search"
+          placeholder="Search title, author, venue, topic, or keyword…"
+          aria-label="Search publications"
+        >
+
+        <div class="filter-dropdown">
+          <button
+            id="area-trigger"
+            class="filter-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="area-panel"
+          >
+            <span class="filter-trigger-main">
+              <span class="filter-trigger-label">Research areas</span>
+              <span id="area-trigger-value" class="filter-trigger-value">All research areas</span>
+            </span>
+            <span class="filter-chevron">▾</span>
+          </button>
+
+          <div id="area-panel" class="filter-panel" hidden>
+            <div class="filter-panel-head">
+              <div>
+                <strong>Filter by research area</strong>
+                <span id="area-meta"></span>
+              </div>
+              <button id="area-close" class="filter-close" type="button" aria-label="Close research area filter">×</button>
+            </div>
+
+            <input
+              id="area-find"
+              class="filter-find"
+              type="search"
+              placeholder="Find a research area…"
+              aria-label="Find a research area"
+            >
+
+            <div id="area-list" class="filter-list"></div>
+
+            <div class="filter-panel-actions">
+              <button id="area-clear" class="filter-clear" type="button">Clear areas</button>
+              <button id="area-done" class="filter-done" type="button">Done</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-dropdown">
+          <button
+            id="topic-trigger"
+            class="filter-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="topic-panel"
+          >
+            <span class="filter-trigger-main">
+              <span class="filter-trigger-label">Topics</span>
+              <span id="topic-trigger-value" class="filter-trigger-value">All topics</span>
+            </span>
+            <span class="filter-chevron">▾</span>
+          </button>
+
+          <div id="topic-panel" class="filter-panel" hidden>
+            <div class="filter-panel-head">
+              <div>
+                <strong>Filter by topic</strong>
+                <span id="topic-meta"></span>
+              </div>
+              <button id="topic-close" class="filter-close" type="button" aria-label="Close topic filter">×</button>
+            </div>
+
+            <input
+              id="topic-find"
+              class="filter-find"
+              type="search"
+              placeholder="Find a topic…"
+              aria-label="Find a topic"
+            >
+
+            <div id="topic-list" class="filter-list"></div>
+
+            <div class="filter-panel-actions">
+              <button id="topic-clear" class="filter-clear" type="button">Clear topics</button>
+              <button id="topic-done" class="filter-done" type="button">Done</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="reset-filters" class="reset-filters" type="button" disabled>
+          Reset all filters
+        </button>
+      </div>
+
+      <div id="active-filter-summary" class="active-filter-summary"></div>
+    </div>
+
+    <div class="catalog-meta single">
+      <span id="pub-count"></span>
+    </div>
+
+    <div id="pub-list" class="pub-list"></div>
+  </div>
+</section>
+
+
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<img src="/nexus-lab/assets/img/nexus-logo.png" alt="NEXUS Lab">
+<p>Secure, Trustworthy, and Intelligent Software Engineering at Florida Polytechnic University.</p>
+</div>
+<div class="footer-col">
+<h3>Explore</h3>
+<a href="/nexus-lab/research/">Research</a>
+<a href="/nexus-lab/people/">People</a>
+<a href="/nexus-lab/publications/">Publications</a>
+<a href="/nexus-lab/artifacts/">Research Artifacts</a>
+</div>
+<div class="footer-col">
+<h3>Connect</h3>
+<a href="https://karim-elish.github.io/" target="_blank" rel="noopener">Karim Elish</a>
+<a href="https://floridapoly.edu/" target="_blank" rel="noopener">Florida Polytechnic University</a>
+<a href="mailto:kelish@floridapoly.edu">Email the lab</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span data-year>
+</span> NEXUS Lab. Florida Polytechnic University.</span>
+</div>
+</div>
+</footer>
+<script src="/nexus-lab/assets/js/site.js">
+</script>
+<script src="/nexus-lab/assets/js/data.js">
+</script>
+<script>
+  (function () {
+    const list = document.getElementById("pub-list");
+    if (!list || !window.NEXUS_DATA || !Array.isArray(NEXUS_DATA.publications)) return;
+
+    const publications = NEXUS_DATA.publications;
+
+    const search = document.getElementById("pub-search");
+    const count = document.getElementById("pub-count");
+    const reset = document.getElementById("reset-filters");
+    const summary = document.getElementById("active-filter-summary");
+
+    const selectedAreas = new Set();
+    const selectedTopics = new Set();
+
+    const normalize = (value) => String(value || "").trim().toLowerCase();
+
+    function makeCounts(field) {
+      const counts = new Map();
+
+      publications.forEach((publication) => {
+        const values = Array.isArray(publication[field]) ? publication[field] : [];
+        values.forEach((value) => {
+          counts.set(value, (counts.get(value) || 0) + 1);
+        });
+      });
+
+      return counts;
+    }
+
+    const areaCounts = makeCounts("areas");
+    const topicCounts = makeCounts("topics");
+
+    function createDropdown(config) {
+      const trigger = document.getElementById(config.trigger);
+      const triggerValue = document.getElementById(config.triggerValue);
+      const panel = document.getElementById(config.panel);
+      const find = document.getElementById(config.find);
+      const listBox = document.getElementById(config.list);
+      const meta = document.getElementById(config.meta);
+      const clear = document.getElementById(config.clear);
+      const done = document.getElementById(config.done);
+      const close = document.getElementById(config.close);
+
+      function closePanel() {
+        panel.hidden = true;
+        trigger.setAttribute("aria-expanded", "false");
+      }
+
+      function openPanel() {
+        closeAllPanels(panel);
+        panel.hidden = false;
+        trigger.setAttribute("aria-expanded", "true");
+        find.focus();
+      }
+
+      function renderOptions() {
+        const needle = normalize(find.value);
+
+        const values = [...config.counts.keys()]
+          .filter((value) => normalize(value).includes(needle))
+          .sort((a, b) => a.localeCompare(b));
+
+        listBox.innerHTML = values.length
+          ? values.map((value) => {
+              const active = config.selected.has(value);
+              return `
+                <button
+                  class="filter-option ${active ? "active" : ""}"
+                  type="button"
+                  data-filter-value="${value.replace(/"/g, "&quot;")}"
+                  aria-pressed="${active}"
+                >
+                  <span class="filter-check">${active ? "✓" : ""}</span>
+                  <span class="filter-option-name">${value}</span>
+                  <span class="filter-option-count">${config.counts.get(value)}</span>
+                </button>
+              `;
+            }).join("")
+          : '<div class="filter-empty">No matching options.</div>';
+
+        listBox.querySelectorAll("[data-filter-value]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const value = button.dataset.filterValue;
+
+            if (config.selected.has(value)) {
+              config.selected.delete(value);
+            } else {
+              config.selected.add(value);
+            }
+
+            renderOptions();
+            updateTrigger();
+            render();
+          });
+        });
+      }
+
+      function updateTrigger() {
+        const numberSelected = config.selected.size;
+
+        triggerValue.textContent =
+          numberSelected === 0
+            ? config.allLabel
+            : numberSelected === 1
+              ? [...config.selected][0]
+              : `${numberSelected} selected`;
+
+        meta.textContent =
+          `${config.counts.size} ${config.metaLabel} · match any selected ${config.singular}`;
+      }
+
+      trigger.addEventListener("click", () => {
+        panel.hidden ? openPanel() : closePanel();
+      });
+
+      find.addEventListener("input", renderOptions);
+
+      clear.addEventListener("click", () => {
+        config.selected.clear();
+        renderOptions();
+        updateTrigger();
+        render();
+      });
+
+      done.addEventListener("click", closePanel);
+      close.addEventListener("click", closePanel);
+
+      renderOptions();
+      updateTrigger();
+
+      function resetDropdown() {
+        find.value = "";
+        config.selected.clear();
+        renderOptions();
+        updateTrigger();
+      }
+
+      return { panel, trigger, closePanel, resetDropdown };
+    }
+
+    const dropdowns = [];
+
+    function closeAllPanels(exceptPanel) {
+      dropdowns.forEach((dropdown) => {
+        if (dropdown.panel !== exceptPanel) dropdown.closePanel();
+      });
+    }
+
+    dropdowns.push(
+      createDropdown({
+        trigger: "area-trigger",
+        triggerValue: "area-trigger-value",
+        panel: "area-panel",
+        find: "area-find",
+        list: "area-list",
+        meta: "area-meta",
+        clear: "area-clear",
+        done: "area-done",
+        close: "area-close",
+        counts: areaCounts,
+        selected: selectedAreas,
+        allLabel: "All research areas",
+        metaLabel: "research areas",
+        singular: "area"
+      })
+    );
+
+    dropdowns.push(
+      createDropdown({
+        trigger: "topic-trigger",
+        triggerValue: "topic-trigger-value",
+        panel: "topic-panel",
+        find: "topic-find",
+        list: "topic-list",
+        meta: "topic-meta",
+        clear: "topic-clear",
+        done: "topic-done",
+        close: "topic-close",
+        counts: topicCounts,
+        selected: selectedTopics,
+        allLabel: "All topics",
+        metaLabel: "topics",
+        singular: "topic"
+      })
+    );
+
+    function matchesAny(values, selected) {
+      if (selected.size === 0) return true;
+      const set = new Set(Array.isArray(values) ? values : []);
+      return [...selected].some((value) => set.has(value));
+    }
+
+    function render() {
+      const needle = normalize(search.value);
+
+      const filtered = publications.filter((publication) => {
+        const searchable = [
+          publication.title,
+          publication.authors,
+          publication.venue,
+          ...(Array.isArray(publication.areas) ? publication.areas : []),
+          ...(Array.isArray(publication.topics) ? publication.topics : [])
+        ].join(" ").toLowerCase();
+
+        const matchesKeyword = !needle || searchable.includes(needle);
+        const matchesAreas = matchesAny(publication.areas, selectedAreas);
+        const matchesTopics = matchesAny(publication.topics, selectedTopics);
+
+        return matchesKeyword && matchesAreas && matchesTopics;
+      });
+
+      count.textContent =
+        `${filtered.length} publication${filtered.length === 1 ? "" : "s"}`;
+
+      list.innerHTML = filtered.length
+        ? filtered.map((publication) => `
+            <article class="pub">
+              <div class="pub-year">${publication.year}</div>
+              <div>
+                <h2>${publication.title}</h2>
+                <p class="authors">${publication.authors}</p>
+                <p class="venue">${publication.venue}</p>
+                ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
+              </div>
+            </article>
+          `).join("")
+        : '<div class="empty">No publications match the current filters.</div>';
+
+      const keywordActive = normalize(search.value).length > 0;
+      const hasFilters =
+        keywordActive || selectedAreas.size > 0 || selectedTopics.size > 0;
+
+      reset.disabled = !hasFilters;
+
+      const parts = [];
+      if (keywordActive) parts.push(`keyword: “${search.value.trim()}”`);
+      if (selectedAreas.size) parts.push(`${selectedAreas.size} research area${selectedAreas.size === 1 ? "" : "s"}`);
+      if (selectedTopics.size) parts.push(`${selectedTopics.size} topic${selectedTopics.size === 1 ? "" : "s"}`);
+
+      summary.innerHTML = hasFilters
+        ? `<strong>Active filters:</strong> ${parts.join(" · ")}`
+        : "";
+    }
+
+    search.addEventListener("input", render);
+
+    reset.addEventListener("click", () => {
+      search.value = "";
+      dropdowns.forEach((dropdown) => dropdown.resetDropdown());
+      closeAllPanels();
+      render();
+    });
+
+    document.addEventListener("click", (event) => {
+      const clickedInsideDropdown = event.target.closest(".filter-dropdown");
+      if (!clickedInsideDropdown) closeAllPanels();
+    });
+
+    render();
+  })();
+</script>
+</body>
+</html>

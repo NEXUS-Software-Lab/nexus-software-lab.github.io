@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://karim-elish.github.io/nexus-lab/sitemap.xml
