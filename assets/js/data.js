@@ -93,11 +93,32 @@ window.NEXUS_DATA = {
     }
   ],
   publications: [
+    {
+  year:2027,
+  title:"When LLMs Say Secure: An Empirical Study of False Assurance in Android Vulnerability Detection",
+  authors:"Joyce Champie and Karim Elish",
+  venue:"Proceedings of the 49th IEEE/ACM International Conference on Software Engineering (ICSE), Research Track",
+  areas:[
+    "Software Security & Privacy",
+    "Mobile & Android Security",
+    "Trustworthy AI",
+    "Empirical Software Engineering"
+  ],
+  topics:[
+    "Large Language Models",
+    "AI for Security",
+    "Android Security",
+    "Software Security",
+    "Software Assurance",
+    "Empirical Study"
+  ]
+},
+    
 {
   year:2026,
   title:"Security Risks in Wearable Mobile Applications",
   authors:"Sebastian Siedler, Mohamed Sylla, and Karim Elish",
-  venue:"IEEE Internet Computing, Accepted for publication, September 2026. To appear",
+  venue:"IEEE Internet Computing, accepted, September 2026. To appear",
   areas:[
     "Software Security & Privacy",
     "Mobile & Android Security",
