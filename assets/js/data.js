@@ -156,9 +156,9 @@ window.NEXUS_DATA = {
       {name:"Nicholas Carracino",role:"Master's Student", photo: "/assets/img/people/Nicholas.png"},
       {name:"Shane Califano",role:"Master's Student", photo: "/assets/img/people/Shane.png"}, 
       {name:"William Blaine",role:"Undergraduate · Killam Fellowships / Fulbright", photo: "/assets/img/people/Will.png"},
-      {name:"Justine Bailey",role:"Applied Research Intern · PRISM Fellow", photo: "/assets/img/people/Justine.png"}
-      {name:"Aidan Guenther",role:"Applied Research Intern · PRISM Fellow", photo: "/assets/img/people/Aidan_Guenther.png"}
-      {name:"Anthony Zapata",role:"Applied Research Intern · PRISM Fellow", photo: "/assets/img/people/Anthony_Zapata.png"}
+      {name:"Justine Bailey",role:"Applied Research Intern · PRISM Fellow", photo: "/assets/img/people/Justine.png"},
+      {name:"Aidan Guenther",role:"Applied Research Intern · PRISM Fellow", photo: "/assets/img/people/Aidan_Guenther.png"},
+      {name:"Anthony Zapata",role:"Applied Research Intern · PRISM Fellow", photo: "/assets/img/people/Anthony_Zapata.png"},
       {name:"Samuel Gerken",role:"Applied Research Intern · PRISM Fellow", photo: "/assets/img/people/Samuel_Gerken.png"}
 
     ],
