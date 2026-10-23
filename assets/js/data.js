@@ -152,7 +152,7 @@ window.NEXUS_DATA = {
     current: [
       /*{name:"Philipp Schafer",role:"Fulbright Graduate Fellow", photo: "/assets/img/people/Philipp.png"},*/
       /*{name:"Johannes Bohme",role:"Fulbright Graduate Fellow", photo: "/assets/img/people/Johannes.png"},*/
-      {name:"Mohamed Sylla",role:"Master's Student · Fulbright", photo: "/assets/img/people/Sylla.png"},
+      {name:"Mohamed Sylla",role:"Master's Student · Fulbright Graduate Fellow", photo: "/assets/img/people/Sylla.png"},
       {name:"Nicholas Carracino",role:"Master's Student", photo: "/assets/img/people/Nicholas.png"},
       {name:"Shane Califano",role:"Master's Student", photo: "/assets/img/people/Shane.png"}, 
       {name:"William Blaine",role:"Undergraduate · Killam Fellowships / Fulbright", photo: "/assets/img/people/Will.png"},
