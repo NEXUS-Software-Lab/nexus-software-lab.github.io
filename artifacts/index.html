@@ -290,6 +290,27 @@
   padding: 10px;
 }
 
+
+  /* Reusable visual for software tools (SecAIDev and future tools) */
+  .artifact-visual.is-tool {
+    background: linear-gradient(145deg, #f7fbff 0%, #edf7f8 100%);
+    border-color: #d6e6ef;
+  }
+
+  .artifact-tool-icon {
+    width: 66px;
+    height: 66px;
+    fill: none;
+    stroke: var(--blue);
+    stroke-width: 1.65;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .artifact-tool-icon .tool-accent {
+    stroke: var(--teal);
+  }
+
   .artifact-fallback-icon {
     width: 48px;
     height: 48px;
@@ -368,6 +389,13 @@
       height: 70px;
       flex-basis: 70px;
     }
+
+
+    .artifact-tool-icon {
+      width: 44px;
+      height: 44px;
+    }
+
   }
 </style>
 </head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-wrap"><a class="brand" href="/" aria-label="NEXUS Lab home"><img src="/assets/img/nexus-logo.png" alt="NEXUS Lab — Secure, Trustworthy, and Intelligent Software Engineering"></a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button><nav class="nav" aria-label="Primary navigation"><a class="" href="/">Home</a><a class="" href="/research/">Research</a><a class="" href="/people/">People</a><a class="" href="/publications/">Publications</a><a class="active" href="/artifacts/">Research Artifacts</a><a class="" href="/news/">News</a><a class="" href="/contact/">Contact</a></nav></div></header><main id="main"><section class="page-hero"><div class="container"><h1>Research Artifacts</h1>
@@ -543,4 +571,60 @@
 These artifacts are provided for academic and research purposes. Please cite the corresponding paper when using these resources.</p>
   </div>
 </section>
-</main><footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="/assets/img/nexus-logo.png" alt="NEXUS Lab"><p>Secure, Trustworthy, and Intelligent Software Engineering at Florida Polytechnic University.</p></div><div class="footer-col"><h3>Explore</h3><a href="/research/">Research</a><a href="/people/">People</a><a href="/publications/">Publications</a><a href="/artifacts/">Research Artifacts</a></div><div class="footer-col"><h3>Connect</h3><a href="https://karim-elish.github.io/" target="_blank" rel="noopener">Karim Elish</a><a href="https://floridapoly.edu/" target="_blank" rel="noopener">Florida Polytechnic University</a><a href="mailto:kelish@floridapoly.edu">Email the lab</a></div></div><div class="footer-bottom"><span>© <span data-year></span> NEXUS Lab. Florida Polytechnic University.</span></div></div></footer><script src="/assets/js/site.js"></script><script src="/assets/js/data.js?v=20260824-2"></script><script src="/assets/js/artifacts.js?v=20260824-2"></script></body></html>
+</main><footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="/assets/img/nexus-logo.png" alt="NEXUS Lab"><p>Secure, Trustworthy, and Intelligent Software Engineering at Florida Polytechnic University.</p></div><div class="footer-col"><h3>Explore</h3><a href="/research/">Research</a><a href="/people/">People</a><a href="/publications/">Publications</a><a href="/artifacts/">Research Artifacts</a></div><div class="footer-col"><h3>Connect</h3><a href="https://karim-elish.github.io/" target="_blank" rel="noopener">Karim Elish</a><a href="https://floridapoly.edu/" target="_blank" rel="noopener">Florida Polytechnic University</a><a href="mailto:kelish@floridapoly.edu">Email the lab</a></div></div><div class="footer-bottom"><span>© <span data-year></span> NEXUS Lab. Florida Polytechnic University.</span></div></div></footer><script src="/assets/js/site.js"></script><script src="/assets/js/data.js?v=20260824-2"></script><script src="/assets/js/artifacts.js?v=20260824-2"></script>
+<script>
+(function () {
+  const toolIcon = `
+    <svg class="artifact-tool-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <!-- software window -->
+      <rect x="7" y="9" width="38" height="31" rx="5"></rect>
+      <path d="M7 17h38"></path>
+      <circle cx="13" cy="13" r="1.2"></circle>
+      <circle cx="18" cy="13" r="1.2"></circle>
+
+      <!-- code -->
+      <path d="m19 25-5 4 5 4"></path>
+      <path d="m29 25 5 4-5 4"></path>
+      <path d="m27 23-6 12"></path>
+
+      <!-- gear / tool marker -->
+      <circle class="tool-accent" cx="45" cy="44" r="6"></circle>
+      <circle class="tool-accent" cx="45" cy="44" r="2"></circle>
+      <path class="tool-accent" d="M45 34v4M45 50v4M35 44h4M51 44h4"></path>
+      <path class="tool-accent" d="m38 37 2.8 2.8M49.2 48.2 52 51M52 37l-2.8 2.8M40.8 48.2 38 51"></path>
+    </svg>`;
+
+  function applyToolIcons() {
+    const cards = document.querySelectorAll("#artifact-grid .artifact, #artifact-grid article");
+
+    cards.forEach((card) => {
+      const kicker = card.querySelector(".card-kicker, .artifact-type, .artifact-kind");
+      const explicitType = (card.dataset.type || "").trim().toLowerCase();
+      const kickerText = (kicker?.textContent || "").trim().toLowerCase();
+
+      const isTool =
+        explicitType === "tool" ||
+        /^tool(?:\s|·|$)/i.test(kickerText) ||
+        /(?:^|\s|·)tool(?:\s|·|$)/i.test(kickerText);
+
+      if (!isTool) return;
+
+      const visual = card.querySelector(".artifact-visual");
+      if (!visual || visual.classList.contains("is-tool")) return;
+
+      visual.classList.add("is-tool");
+      visual.innerHTML = toolIcon;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", applyToolIcons);
+
+  const grid = document.getElementById("artifact-grid");
+  if (grid) {
+    const observer = new MutationObserver(applyToolIcons);
+    observer.observe(grid, { childList: true, subtree: true });
+    applyToolIcons();
+  }
+})();
+</script>
+</body></html>
