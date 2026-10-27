@@ -291,24 +291,12 @@
 }
 
 
-  /* Reusable visual for software tools (SecAIDev and future tools) */
-  .artifact-visual.is-tool {
-    background: linear-gradient(145deg, #f7fbff 0%, #edf7f8 100%);
-    border-color: #d6e6ef;
-  }
-
-  .artifact-tool-icon {
-    width: 66px;
-    height: 66px;
+  .artifact-tool-symbol {
     fill: none;
-    stroke: var(--blue);
-    stroke-width: 1.65;
+    stroke: currentColor;
+    stroke-width: 2.2;
     stroke-linecap: round;
     stroke-linejoin: round;
-  }
-
-  .artifact-tool-icon .tool-accent {
-    stroke: var(--teal);
   }
 
   .artifact-fallback-icon {
@@ -389,13 +377,6 @@
       height: 70px;
       flex-basis: 70px;
     }
-
-
-    .artifact-tool-icon {
-      width: 44px;
-      height: 44px;
-    }
-
   }
 </style>
 </head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container nav-wrap"><a class="brand" href="/" aria-label="NEXUS Lab home"><img src="/assets/img/nexus-logo.png" alt="NEXUS Lab — Secure, Trustworthy, and Intelligent Software Engineering"></a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button><nav class="nav" aria-label="Primary navigation"><a class="" href="/">Home</a><a class="" href="/research/">Research</a><a class="" href="/people/">People</a><a class="" href="/publications/">Publications</a><a class="active" href="/artifacts/">Research Artifacts</a><a class="" href="/news/">News</a><a class="" href="/contact/">Contact</a></nav></div></header><main id="main"><section class="page-hero"><div class="container"><h1>Research Artifacts</h1>
@@ -575,23 +556,17 @@ These artifacts are provided for academic and research purposes. Please cite the
 <script>
 (function () {
   const toolIcon = `
-    <svg class="artifact-tool-icon" viewBox="0 0 64 64" aria-hidden="true">
-      <!-- toolbox handle -->
-      <path d="M23 18v-4.5A4.5 4.5 0 0 1 27.5 9h9A4.5 4.5 0 0 1 41 13.5V18"></path>
+    <svg class="artifact-fallback-icon artifact-tool-symbol"
+         viewBox="0 0 64 64"
+         aria-hidden="true">
+      <!-- wrench -->
+      <path d="M20.5 13.5a11 11 0 0 0 11.7 14.8l17.3 17.3a5.1 5.1 0 1 1-7.2 7.2L25 35.5a11 11 0 0 0-14.8-11.7l7.1 7.1 6.8-1.8 1.8-6.8-5.4-8.8Z"></path>
 
-      <!-- toolbox body -->
-      <rect x="8" y="18" width="48" height="34" rx="5"></rect>
-      <path d="M8 30h48"></path>
-
-      <!-- center latch -->
-      <rect class="tool-accent" x="28" y="26" width="8" height="8" rx="1.8"></rect>
-
-      <!-- simple tool marks -->
-      <path class="tool-accent" d="m18 39 6 6"></path>
-      <path class="tool-accent" d="m24 39-6 6"></path>
-
-      <path class="tool-accent" d="M43 38a5 5 0 0 0 5.8 6.8l3.2 3.2"></path>
-      <path class="tool-accent" d="M46.5 38.5 50 35l-1.2-3.2a5 5 0 0 0-6.3 6.7Z"></path>
+      <!-- screwdriver -->
+      <path d="M42.5 11.5 52 21"></path>
+      <path d="M45.2 8.8 54.7 18.3"></path>
+      <path d="m41.5 18.5-20 20"></path>
+      <path d="M17.5 37.5 11 44a6 6 0 0 0 8.5 8.5l6.5-6.5"></path>
     </svg>`;
 
   function applyToolIcons() {
@@ -610,10 +585,10 @@ These artifacts are provided for academic and research purposes. Please cite the
       if (!isTool) return;
 
       const visual = card.querySelector(".artifact-visual");
-      if (!visual || visual.classList.contains("is-tool")) return;
+      if (!visual || visual.dataset.toolIconApplied === "true") return;
 
-      visual.classList.add("is-tool");
       visual.innerHTML = toolIcon;
+      visual.dataset.toolIconApplied = "true";
     });
   }
 
