@@ -576,22 +576,22 @@ These artifacts are provided for academic and research purposes. Please cite the
 (function () {
   const toolIcon = `
     <svg class="artifact-tool-icon" viewBox="0 0 64 64" aria-hidden="true">
-      <!-- software window -->
-      <rect x="7" y="9" width="38" height="31" rx="5"></rect>
-      <path d="M7 17h38"></path>
-      <circle cx="13" cy="13" r="1.2"></circle>
-      <circle cx="18" cy="13" r="1.2"></circle>
+      <!-- toolbox handle -->
+      <path d="M23 18v-4.5A4.5 4.5 0 0 1 27.5 9h9A4.5 4.5 0 0 1 41 13.5V18"></path>
 
-      <!-- code -->
-      <path d="m19 25-5 4 5 4"></path>
-      <path d="m29 25 5 4-5 4"></path>
-      <path d="m27 23-6 12"></path>
+      <!-- toolbox body -->
+      <rect x="8" y="18" width="48" height="34" rx="5"></rect>
+      <path d="M8 30h48"></path>
 
-      <!-- gear / tool marker -->
-      <circle class="tool-accent" cx="45" cy="44" r="6"></circle>
-      <circle class="tool-accent" cx="45" cy="44" r="2"></circle>
-      <path class="tool-accent" d="M45 34v4M45 50v4M35 44h4M51 44h4"></path>
-      <path class="tool-accent" d="m38 37 2.8 2.8M49.2 48.2 52 51M52 37l-2.8 2.8M40.8 48.2 38 51"></path>
+      <!-- center latch -->
+      <rect class="tool-accent" x="28" y="26" width="8" height="8" rx="1.8"></rect>
+
+      <!-- simple tool marks -->
+      <path class="tool-accent" d="m18 39 6 6"></path>
+      <path class="tool-accent" d="m24 39-6 6"></path>
+
+      <path class="tool-accent" d="M43 38a5 5 0 0 0 5.8 6.8l3.2 3.2"></path>
+      <path class="tool-accent" d="M46.5 38.5 50 35l-1.2-3.2a5 5 0 0 0-6.3 6.7Z"></path>
     </svg>`;
 
   function applyToolIcons() {
