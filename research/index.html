@@ -28,8 +28,8 @@
   
   .research-area-item {
     display: grid;
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: 18px;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 20px;
     align-items: start;
     padding: 24px;
     background: #fff;
@@ -45,19 +45,20 @@
   }
 
   .research-area-icon {
-    width: 60px;
-    height: 60px;
+    width: 74px;
+    height: 74px;
     display: grid;
     place-items: center;
-    border-radius: 15px;
-    background: #f1f7fb;
-    border: 1px solid #dce8f5;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #f6fbff 0%, #eaf4fb 100%);
+    border: 1px solid #d5e5f2;
     color: var(--blue);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 5px 14px rgba(15,35,60,.04);
   }
 
   .research-area-icon svg {
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 42px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.8;
@@ -77,6 +78,34 @@
     color: var(--muted);
     font-size: .91rem;
     line-height: 1.65;
+  }
+
+
+  .research-mission {
+    padding: 34px 0 6px;
+  }
+
+  .research-mission-inner {
+    max-width: 900px;
+  }
+
+  .research-mission .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .research-mission h2 {
+    margin: 0 0 10px;
+    color: var(--navy);
+    font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+    line-height: 1.2;
+  }
+
+  .research-mission p {
+    max-width: 850px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
   }
 
   .themes-intro {
@@ -110,20 +139,20 @@
 
   @media (max-width: 520px) {
     .research-area-item {
-      grid-template-columns: 40px minmax(0, 1fr);
-      gap: 12px;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 14px;
       padding: 19px;
     }
 
     .research-area-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 13px;
     }
 
     .research-area-icon svg {
-      width: 20px;
-      height: 20px;
+      width: 28px;
+      height: 28px;
     }
   }
 </style>
@@ -155,6 +184,21 @@
               <!-- <p>We study secure and trustworthy software through interconnected research in software security and privacy, AI, software analysis and quality, and empirical studies.</p> -->
            
           </section>
+
+
+      <!-- RESEARCH MISSION -->
+      <section class="research-mission">
+        <div class="container">
+          <div class="research-mission-inner">
+            <p class="eyebrow">Our purpose</p>
+            <h2>Research Mission</h2>
+            <p>
+              Our research mission is to understand and improve the security, quality, and trustworthiness
+              of modern software systems through empirical studies, software analysis, and AI-driven methods.
+            </p>
+          </div>
+        </div>
+      </section>
 
 <!-- RESEARCH AREAS -->
 <section class="section">
