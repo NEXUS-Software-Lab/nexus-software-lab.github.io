@@ -111,8 +111,7 @@ window.NEXUS_DATA = {
     "Software Security",
     "Software Assurance",
     "Empirical Study"
-  ], 
-  award:"Direct Acceptance Rate: 5.0% (119/2,375)"}
+  ], award:"Direct Acceptance Rate: 5.0% (119/2,375)"
 },
     
 {
