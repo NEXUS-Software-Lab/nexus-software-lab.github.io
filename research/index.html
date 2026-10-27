@@ -28,8 +28,8 @@
   
   .research-area-item {
     display: grid;
-    grid-template-columns: 96px minmax(0, 1fr);
-    gap: 22px;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 18px;
     align-items: start;
     padding: 24px;
     background: #fff;
@@ -45,53 +45,24 @@
   }
 
   .research-area-icon {
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     display: grid;
     place-items: center;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #fbfdff 0%, #f2f8fc 100%);
-    border: 1px solid #dbe7f1;
+    border-radius: 15px;
+    background: #f1f7fb;
+    border: 1px solid #dce8f5;
     color: var(--blue);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 6px 18px rgba(15,35,60,.045);
   }
 
   .research-area-icon svg {
-    width: 64px;
-    height: 64px;
-    overflow: visible;
-  }
-
-  .research-area-icon .navy-stroke {
+    width: 34px;
+    height: 34px;
     fill: none;
-    stroke: #0b315f;
+    stroke: currentColor;
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
-  }
-
-  .research-area-icon .teal-stroke {
-    fill: none;
-    stroke: #0a9a99;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .research-area-icon .navy-fill {
-    fill: #0b315f;
-  }
-
-  .research-area-icon .teal-fill {
-    fill: #10a6a2;
-  }
-
-  .research-area-icon .soft-fill {
-    fill: #eaf5f8;
-  }
-
-  .research-area-icon .white-fill {
-    fill: #ffffff;
   }
 
   .research-area-copy h3 {
@@ -106,34 +77,6 @@
     color: var(--muted);
     font-size: .91rem;
     line-height: 1.65;
-  }
-
-
-  .research-mission {
-    padding: 34px 0 6px;
-  }
-
-  .research-mission-inner {
-    max-width: 900px;
-  }
-
-  .research-mission .eyebrow {
-    margin-bottom: 8px;
-  }
-
-  .research-mission h2 {
-    margin: 0 0 10px;
-    color: var(--navy);
-    font-size: clamp(1.45rem, 2.2vw, 1.9rem);
-    line-height: 1.2;
-  }
-
-  .research-mission p {
-    max-width: 850px;
-    margin: 0;
-    color: var(--muted);
-    font-size: 1.02rem;
-    line-height: 1.7;
   }
 
   .themes-intro {
@@ -167,22 +110,93 @@
 
   @media (max-width: 520px) {
     .research-area-item {
-      grid-template-columns: 64px minmax(0, 1fr);
-      gap: 14px;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 12px;
       padding: 19px;
     }
 
     .research-area-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 15px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
     }
 
     .research-area-icon svg {
-      width: 42px;
-      height: 42px;
+      width: 20px;
+      height: 20px;
     }
   }
+
+  /* Research mission */
+  .research-mission {
+    padding: 34px 0 6px;
+  }
+
+  .research-mission-inner {
+    max-width: 900px;
+  }
+
+  .research-mission .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .research-mission h2 {
+    margin: 0 0 10px;
+    color: var(--navy);
+    font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+    line-height: 1.2;
+  }
+
+  .research-mission p {
+    max-width: 850px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  /* Preview A image icons */
+  .research-area-item {
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .research-area-icon {
+    width: 96px;
+    height: 96px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid #e0e9f2;
+    overflow: hidden;
+  }
+
+  .research-area-icon img {
+    display: block;
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 520px) {
+    .research-area-item {
+      grid-template-columns: 68px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .research-area-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+    }
+
+    .research-area-icon img {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
 </style>
 </head>
   <body>
@@ -247,20 +261,68 @@
   <!-- Software Security & Privacy -->
   <article class="research-area-item">
     <div class="research-area-icon">
-<svg viewBox="0 0 64 64" aria-hidden="true">
-        <rect class="soft-fill" x="7" y="9" width="37" height="42" rx="5"/>
-        <rect class="navy-stroke" x="7" y="9" width="37" height="42" rx="5"/>
-        <path class="navy-stroke" d="M7 17h37"/>
-        <circle class="navy-fill" cx="13" cy="13" r="1.3"/>
-        <circle class="navy-fill" cx="18" cy="13" r="1.3"/>
-        <path class="teal-stroke" d="M14 42V34M22 42V29M30 42V25M38 42V31"/>
-        <path class="navy-stroke" d="M14 24h11"/>
-        <path class="soft-fill" d="M47 20h8l3 4v26a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5V25a5 5 0 0 1 5-5h4Z"/>
-        <path class="navy-stroke" d="M47 20h8l3 4v26a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5V25a5 5 0 0 1 5-5h4Z"/>
-        <path class="navy-stroke" d="M44 30h9M44 35h9M44 40h7"/>
-        <circle class="teal-stroke" cx="48" cy="47" r="4"/>
-        <path class="teal-stroke" d="M48 43v4h4"/>
-      </svg>
+      <img src="/assets/img/research/software-security-privacy.png" alt="" aria-hidden="true">
+    </div>
+    <div class="research-area-copy">
+      <h3>Software Security &amp; Privacy</h3>
+      <p>
+        Secure software design, vulnerability and privacy analysis, data protection,
+        security testing, and evidence-based assurance.
+      </p>
+    </div>
+  </article>
+
+  <!-- Mobile Security & Malware Analysis -->
+  <article class="research-area-item">
+    <div class="research-area-icon">
+      <img src="/assets/img/research/mobile-security-malware.png" alt="" aria-hidden="true">
+    </div>
+    <div class="research-area-copy">
+      <h3>Mobile Security &amp; Malware Analysis</h3>
+      <p>
+        Security and privacy of mobile ecosystems, including Android, malware detection
+        and characterization, app repackaging, inter-app communication, and vulnerability analysis.
+      </p>
+    </div>
+  </article>
+
+  <!-- Trustworthy AI -->
+  <article class="research-area-item">
+   <div class="research-area-icon">
+      <img src="/assets/img/research/trustworthy-ai.png" alt="" aria-hidden="true">
+    </div>
+    <div class="research-area-copy">
+          <h3>Trustworthy AI</h3>
+          <p>Security, reliability, evidence grounding, and responsible evaluation of AI systems used in software and security contexts.</p>
+        </div>
+  </article>
+
+  <!-- AI for Software Engineering -->
+  <article class="research-area-item">
+    <div class="research-area-icon">
+      <img src="/assets/img/research/ai-software-engineering.png" alt="" aria-hidden="true">
+    </div>
+    <div class="research-area-copy">
+          <h3>AI for Software Engineering</h3>
+          <p>LLMs, coding agents, and intelligent automation for software generation, testing, debugging, analysis, repair, and secure development.</p>
+        </div>
+  </article>
+
+  <!-- Software Analysis & Quality -->
+  <article class="research-area-item">
+   <div class="research-area-icon">
+      <img src="/assets/img/research/software-analysis-quality.png" alt="" aria-hidden="true">
+    </div>
+    <div class="research-area-copy">
+          <h3>Software Analysis &amp; Quality</h3>
+          <p>Program and repository analysis, software metrics, maintainability, architecture, code smells, analytics, and security-aware quality assessment.</p>
+        </div>
+  </article>
+
+  <!-- Empirical Software Engineering -->
+  <article class="research-area-item">
+    <div class="research-area-icon">
+      <img src="/assets/img/research/empirical-software-engineering.png" alt="" aria-hidden="true">
     </div>
     <div class="research-area-copy">
       <h3>Empirical Software Engineering</h3>
