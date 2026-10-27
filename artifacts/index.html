@@ -291,12 +291,19 @@
 }
 
 
-  .artifact-tool-symbol {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  /* Shared artifact-type visuals */
+  .artifact-type-image {
+    display: block;
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 760px) {
+    .artifact-type-image {
+      width: 58px;
+      height: 58px;
+    }
   }
 
   .artifact-fallback-icon {
@@ -555,50 +562,59 @@ These artifacts are provided for academic and research purposes. Please cite the
 </main><footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="/assets/img/nexus-logo.png" alt="NEXUS Lab"><p>Secure, Trustworthy, and Intelligent Software Engineering at Florida Polytechnic University.</p></div><div class="footer-col"><h3>Explore</h3><a href="/research/">Research</a><a href="/people/">People</a><a href="/publications/">Publications</a><a href="/artifacts/">Research Artifacts</a></div><div class="footer-col"><h3>Connect</h3><a href="https://karim-elish.github.io/" target="_blank" rel="noopener">Karim Elish</a><a href="https://floridapoly.edu/" target="_blank" rel="noopener">Florida Polytechnic University</a><a href="mailto:kelish@floridapoly.edu">Email the lab</a></div></div><div class="footer-bottom"><span>© <span data-year></span> NEXUS Lab. Florida Polytechnic University.</span></div></div></footer><script src="/assets/js/site.js"></script><script src="/assets/js/data.js?v=20260824-2"></script><script src="/assets/js/artifacts.js?v=20260824-2"></script>
 <script>
 (function () {
-  const toolIcon = `
-    <svg class="artifact-fallback-icon artifact-tool-symbol"
-         viewBox="0 0 64 64"
-         aria-hidden="true">
-      <!-- wrench -->
-      <path d="M20.5 13.5a11 11 0 0 0 11.7 14.8l17.3 17.3a5.1 5.1 0 1 1-7.2 7.2L25 35.5a11 11 0 0 0-14.8-11.7l7.1 7.1 6.8-1.8 1.8-6.8-5.4-8.8Z"></path>
+  const TYPE_ICONS = {
+    dataset: "/assets/img/artifacts/artifact-dataset.png",
+    tool: "/assets/img/artifacts/artifact-tool.png"
+  };
 
-      <!-- screwdriver -->
-      <path d="M42.5 11.5 52 21"></path>
-      <path d="M45.2 8.8 54.7 18.3"></path>
-      <path d="m41.5 18.5-20 20"></path>
-      <path d="M17.5 37.5 11 44a6 6 0 0 0 8.5 8.5l6.5-6.5"></path>
-    </svg>`;
+  function artifactType(card) {
+    const explicit = (card.dataset.type || card.dataset.artifactType || "").trim().toLowerCase();
+    if (explicit === "dataset" || explicit === "tool") return explicit;
 
-  function applyToolIcons() {
-    const cards = document.querySelectorAll("#artifact-grid .artifact, #artifact-grid article");
+    const kicker = card.querySelector(".card-kicker, .artifact-type, .artifact-kind, [data-artifact-type]");
+    const text = (kicker?.textContent || "").trim().toLowerCase();
+
+    if (/\bdataset\b/.test(text)) return "dataset";
+    if (/\btool\b/.test(text)) return "tool";
+
+    return "";
+  }
+
+  function applyArtifactTypeIcons() {
+    const grid = document.getElementById("artifact-grid");
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll(".artifact, article, .card");
 
     cards.forEach((card) => {
-      const kicker = card.querySelector(".card-kicker, .artifact-type, .artifact-kind");
-      const explicitType = (card.dataset.type || "").trim().toLowerCase();
-      const kickerText = (kicker?.textContent || "").trim().toLowerCase();
-
-      const isTool =
-        explicitType === "tool" ||
-        /^tool(?:\s|·|$)/i.test(kickerText) ||
-        /(?:^|\s|·)tool(?:\s|·|$)/i.test(kickerText);
-
-      if (!isTool) return;
+      const type = artifactType(card);
+      if (!TYPE_ICONS[type]) return;
 
       const visual = card.querySelector(".artifact-visual");
-      if (!visual || visual.dataset.toolIconApplied === "true") return;
+      if (!visual) return;
 
-      visual.innerHTML = toolIcon;
-      visual.dataset.toolIconApplied = "true";
+      if (visual.dataset.typeIcon === type) return;
+
+      visual.innerHTML = "";
+
+      const img = document.createElement("img");
+      img.className = "artifact-type-image";
+      img.src = TYPE_ICONS[type];
+      img.alt = "";
+      img.setAttribute("aria-hidden", "true");
+
+      visual.appendChild(img);
+      visual.dataset.typeIcon = type;
     });
   }
 
-  document.addEventListener("DOMContentLoaded", applyToolIcons);
+  document.addEventListener("DOMContentLoaded", applyArtifactTypeIcons);
 
   const grid = document.getElementById("artifact-grid");
   if (grid) {
-    const observer = new MutationObserver(applyToolIcons);
+    const observer = new MutationObserver(applyArtifactTypeIcons);
     observer.observe(grid, { childList: true, subtree: true });
-    applyToolIcons();
+    applyArtifactTypeIcons();
   }
 })();
 </script>
