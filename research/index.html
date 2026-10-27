@@ -28,8 +28,8 @@
   
   .research-area-item {
     display: grid;
-    grid-template-columns: 78px minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 22px;
     align-items: start;
     padding: 24px;
     background: #fff;
@@ -45,25 +45,53 @@
   }
 
   .research-area-icon {
-    width: 74px;
-    height: 74px;
+    width: 90px;
+    height: 90px;
     display: grid;
     place-items: center;
-    border-radius: 18px;
-    background: linear-gradient(145deg, #f6fbff 0%, #eaf4fb 100%);
-    border: 1px solid #d5e5f2;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #fbfdff 0%, #f2f8fc 100%);
+    border: 1px solid #dbe7f1;
     color: var(--blue);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 5px 14px rgba(15,35,60,.04);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 6px 18px rgba(15,35,60,.045);
   }
 
   .research-area-icon svg {
-    width: 42px;
-    height: 42px;
+    width: 64px;
+    height: 64px;
+    overflow: visible;
+  }
+
+  .research-area-icon .navy-stroke {
     fill: none;
-    stroke: currentColor;
+    stroke: #0b315f;
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
+  }
+
+  .research-area-icon .teal-stroke {
+    fill: none;
+    stroke: #0a9a99;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .research-area-icon .navy-fill {
+    fill: #0b315f;
+  }
+
+  .research-area-icon .teal-fill {
+    fill: #10a6a2;
+  }
+
+  .research-area-icon .soft-fill {
+    fill: #eaf5f8;
+  }
+
+  .research-area-icon .white-fill {
+    fill: #ffffff;
   }
 
   .research-area-copy h3 {
@@ -139,20 +167,20 @@
 
   @media (max-width: 520px) {
     .research-area-item {
-      grid-template-columns: 54px minmax(0, 1fr);
+      grid-template-columns: 64px minmax(0, 1fr);
       gap: 14px;
       padding: 19px;
     }
 
     .research-area-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 13px;
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
     }
 
     .research-area-icon svg {
-      width: 28px;
-      height: 28px;
+      width: 42px;
+      height: 42px;
     }
   }
 </style>
@@ -181,12 +209,24 @@
         <div class="container">
           
               <h1>Research</h1>
-              <p>Our research mission is to understand and improve the security, quality, and trustworthiness of modern software systems through empirical studies, software analysis, and AI-driven methods.</p>
-          
               <!-- <p>We study secure and trustworthy software through interconnected research in software security and privacy, AI, software analysis and quality, and empirical studies.</p> -->
            
           </section>
 
+
+      <!-- RESEARCH MISSION -->
+      <section class="research-mission">
+        <div class="container">
+          <div class="research-mission-inner">
+            <p class="eyebrow">Our purpose</p>
+            <h2>Research Mission</h2>
+            <p>
+              Our research mission is to understand and improve the security, quality, and trustworthiness
+              of modern software systems through empirical studies, software analysis, and AI-driven methods.
+            </p>
+          </div>
+        </div>
+      </section>
 
 <!-- RESEARCH AREAS -->
 <section class="section">
@@ -207,145 +247,19 @@
   <!-- Software Security & Privacy -->
   <article class="research-area-item">
     <div class="research-area-icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2.5 5 5.8v5.1c0 4.6 2.8 8.2 7 10.1 4.2-1.9 7-5.5 7-10.1V5.8L12 2.5Z"/>
-        <rect x="9" y="10.5" width="6" height="5" rx="1"/>
-        <path d="M10.5 10.5V8.8a1.5 1.5 0 0 1 3 0v1.7"/>
-      </svg>
-    </div>
-    <div class="research-area-copy">
-      <h3>Software Security &amp; Privacy</h3>
-      <p>
-        Secure software design, vulnerability and privacy analysis, data protection,
-        security testing, and evidence-based assurance.
-      </p>
-    </div>
-  </article>
-
-  <!-- Mobile Security & Malware Analysis -->
-  <article class="research-area-item">
-    <div class="research-area-icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="4" y="2.5" width="10" height="19" rx="2"/>
-        <path d="M7 5h4"/>
-        <path d="M8 18.5h2"/>
-        <circle cx="17.5" cy="12" r="3"/>
-        <path d="M17.5 9V7.5M17.5 16.5V15M14.5 12H13M22 12h-1.5"/>
-        <path d="m15.4 9.9-1.1-1.1M20.7 15.2l1.1 1.1M20.7 8.8l1.1-1.1M15.4 14.1l-1.1 1.1"/>
-      </svg>
-    </div>
-    <div class="research-area-copy">
-      <h3>Mobile Security &amp; Malware Analysis</h3>
-      <p>
-        Security and privacy of mobile ecosystems, including Android, malware detection
-        and characterization, app repackaging, inter-app communication, and vulnerability analysis.
-      </p>
-    </div>
-  </article>
-
-  <!-- Trustworthy AI -->
-  <article class="research-area-item">
-   <div class="research-area-icon">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <!-- Brain -->
-    <path d="M10.5 4.5A3 3 0 0 0 7 7.4a3 3 0 0 0-1.5 5.4A3.3 3.3 0 0 0 9 17.5"/>
-    <path d="M12 3.5v14"/>
-    <path d="M8.2 8.5H12M8 12H12M9 15H12"/>
-
-    <!-- AI circuit -->
-    <path d="M14 7h2l1.5-2"/>
-    <path d="M14 11h3l2-2"/>
-    <path d="M14 15h2.5l2 2"/>
-    <circle cx="18" cy="4.5" r="1"/>
-    <circle cx="20" cy="8.5" r="1"/>
-    <circle cx="19" cy="17.5" r="1"/>
-
-    <!-- Trust shield -->
-    <path d="M17.5 13.2 14.5 14.5v2.1c0 2 1.2 3.5 3 4.4 1.8-.9 3-2.4 3-4.4v-2.1l-3-1.3Z"/>
-    <path d="m16.2 17 1 1 1.8-2"/>
-  </svg>
-</div>
-    <div class="research-area-copy">
-          <h3>Trustworthy AI</h3>
-          <p>Security, reliability, evidence grounding, and responsible evaluation of AI systems used in software and security contexts.</p>
-        </div>
-  </article>
-
-  <!-- AI for Software Engineering -->
-  <article class="research-area-item">
-    <div class="research-area-icon">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <!-- Software window -->
-    <rect x="2.5" y="4" width="15" height="13" rx="2"/>
-    <path d="M2.5 7.5h15"/>
-    <circle cx="5" cy="5.8" r=".6"/>
-    <circle cx="7" cy="5.8" r=".6"/>
-
-    <!-- Code -->
-    <path d="m8 10-2 2 2 2"/>
-    <path d="m12 10 2 2-2 2"/>
-    <path d="m11 9-2 6"/>
-
-    <!-- AI assistant -->
-    <rect x="15.5" y="13.5" width="6" height="5" rx="1.5"/>
-    <circle cx="17.5" cy="16" r=".5"/>
-    <circle cx="19.5" cy="16" r=".5"/>
-    <path d="M18.5 13.5v-1.5"/>
-    <circle cx="18.5" cy="11" r=".7"/>
-    <path d="M15.5 16h-1M22.5 16h-1"/>
-
-    <!-- AI sparkle -->
-    <path d="M20 3v3M18.5 4.5h3"/>
-  </svg>
-</div>
-    <div class="research-area-copy">
-          <h3>AI for Software Engineering</h3>
-          <p>LLMs, coding agents, and intelligent automation for software generation, testing, debugging, analysis, repair, and secure development.</p>
-        </div>
-  </article>
-
-  <!-- Software Analysis & Quality -->
-  <article class="research-area-item">
-   <div class="research-area-icon">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <!-- Magnifying glass -->
-    <circle cx="9" cy="9" r="5.5"/>
-    <path d="m13 13 4 4"/>
-
-    <!-- Code inside lens -->
-    <path d="m8 7-2 2 2 2"/>
-    <path d="m10 7 2 2-2 2"/>
-
-    <!-- Quality check -->
-    <circle cx="18.5" cy="6" r="3"/>
-    <path d="m17.2 6 1 1 2-2"/>
-
-    <!-- Metrics -->
-    <path d="M14.5 20v-4h2v4"/>
-    <path d="M17.5 20v-6h2v6"/>
-    <path d="M20.5 20v-8h2v8"/>
-    <path d="M13.5 20h10"/>
-  </svg>
-</div>
-    <div class="research-area-copy">
-          <h3>Software Analysis &amp; Quality</h3>
-          <p>Program and repository analysis, software metrics, maintainability, architecture, code smells, analytics, and security-aware quality assessment.</p>
-        </div>
-  </article>
-
-  <!-- Empirical Software Engineering -->
-  <article class="research-area-item">
-    <div class="research-area-icon">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 20h18"/>
-        <rect x="5" y="13" width="3" height="7"/>
-        <rect x="10.5" y="9" width="3" height="11"/>
-        <rect x="16" y="11" width="3" height="9"/>
-        <path d="m5 9 4-4 4 3 5-5"/>
-        <circle cx="5" cy="9" r="1"/>
-        <circle cx="9" cy="5" r="1"/>
-        <circle cx="13" cy="8" r="1"/>
-        <circle cx="18" cy="3" r="1"/>
+<svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect class="soft-fill" x="7" y="9" width="37" height="42" rx="5"/>
+        <rect class="navy-stroke" x="7" y="9" width="37" height="42" rx="5"/>
+        <path class="navy-stroke" d="M7 17h37"/>
+        <circle class="navy-fill" cx="13" cy="13" r="1.3"/>
+        <circle class="navy-fill" cx="18" cy="13" r="1.3"/>
+        <path class="teal-stroke" d="M14 42V34M22 42V29M30 42V25M38 42V31"/>
+        <path class="navy-stroke" d="M14 24h11"/>
+        <path class="soft-fill" d="M47 20h8l3 4v26a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5V25a5 5 0 0 1 5-5h4Z"/>
+        <path class="navy-stroke" d="M47 20h8l3 4v26a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5V25a5 5 0 0 1 5-5h4Z"/>
+        <path class="navy-stroke" d="M44 30h9M44 35h9M44 40h7"/>
+        <circle class="teal-stroke" cx="48" cy="47" r="4"/>
+        <path class="teal-stroke" d="M48 43v4h4"/>
       </svg>
     </div>
     <div class="research-area-copy">
