@@ -102,7 +102,7 @@ window.NEXUS_DATA = {
     "Software Security & Privacy",
     "Mobile & Android Security",
     "Trustworthy AI",
-    "Empirical Software Engineering"
+    "Empirical Software Engineering",
   ],
   topics:[
     "Large Language Models",
@@ -111,7 +111,7 @@ window.NEXUS_DATA = {
     "Software Security",
     "Software Assurance",
     "Empirical Study"
-  ]
+  ] , award:"Direct Acceptance Rate: 5.0% (119/2,375)"},
 },
     
 {
