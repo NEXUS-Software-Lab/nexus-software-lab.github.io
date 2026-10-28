@@ -1,10 +1,10 @@
 
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H16XZDQ11H"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H16XZDQ11H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -12,28 +12,73 @@
 
   gtag('config', 'G-H16XZDQ11H');
 </script>
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Home | NEXUS Lab</title>
-  <meta
-    name="description"
-    content="NEXUS Lab at Florida Polytechnic University: secure, trustworthy, and intelligent software engineering through empirical and AI-driven research."
-  >
-  <meta name="theme-color" content="#071d5e">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="icon" href="/assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Home | NEXUS Lab</title>
+<meta content="NEXUS Lab at Florida Polytechnic University: secure, trustworthy, and intelligent software engineering through empirical and AI-driven research." name="description"/>
+<meta content="#071d5e" name="theme-color"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="/assets/css/style.css" rel="stylesheet"/>
+<link href="/assets/img/favicon.png" rel="icon"/>
+<link href="/assets/img/favicon.png" rel="apple-touch-icon"/>
 <style>
+  /* Home page research overview: broad NEXUS pillars rather than
+     repeating the detailed Research page taxonomy. */
+  .research-areas-section .section-head {
+    align-items: flex-start;
+  }
+
+  .home-research-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .home-research-pillar {
+    min-width: 0;
+    padding: 26px 28px 28px;
+    border-right: 1px solid var(--line);
+  }
+
+  .home-research-pillar:last-child {
+    border-right: 0;
+  }
+
+  .home-research-pillar h3 {
+    margin: 0 0 9px;
+    color: var(--navy);
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .home-research-pillar p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .9rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .home-research-pillars {
+      grid-template-columns: 1fr;
+    }
+
+    .home-research-pillar {
+      padding: 20px 2px;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .home-research-pillar:last-child {
+      border-bottom: 0;
+    }
+  }
+
+
   /* Home page: compact version of the Research page area layout */
   .home-research-list {
     display: grid;
@@ -115,308 +160,248 @@
   }
 </style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="/" aria-label="NEXUS Lab home">
-        <img
-          src="/assets/img/nexus-logo.png"
-          alt="NEXUS Lab — Secure, Trustworthy, and Intelligent Software Engineering"
-        >
-      </a>
-
-      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container nav-wrap">
+<a aria-label="NEXUS Lab home" class="brand" href="/">
+<img alt="NEXUS Lab — Secure, Trustworthy, and Intelligent Software Engineering" src="/assets/img/nexus-logo.png"/>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle">
         ☰
       </button>
-
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="active" href="/">Home</a>
-        <a href="/research/">Research</a>
-        <a href="/people/">People</a>
-        <a href="/publications/">Publications</a>
-        <a href="/artifacts/">Research Artifacts</a>
-        <a href="/news/">News</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Secure, Trustworthy, and Intelligent Software Engineering Lab</p>
-
-          <h1>
+<nav aria-label="Primary navigation" class="nav">
+<a class="active" href="/">Home</a>
+<a href="/research/">Research</a>
+<a href="/people/">People</a>
+<a href="/publications/">Publications</a>
+<a href="/artifacts/">Research Artifacts</a>
+<a href="/news/">News</a>
+<a href="/contact/">Contact</a>
+</nav>
+</div>
+</header>
+<main id="main">
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<p class="eyebrow">Secure, Trustworthy, and Intelligent Software Engineering Lab</p>
+<h1>
             Advancing <span>secure</span>, trustworthy, and intelligent software
           </h1>
-
-          <p class="lead">
+<p class="lead">
           NEXUS Lab is a research lab in Lakeland, FL, affiliated with the Department of Computer Science at Florida Polytechnic University. 
             We study the security, quality, and trustworthiness of modern software systems, and develop empirical and AI-driven methods and tools 
             to understand, evaluate, and improve them.
           </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="/research/">
+<div class="hero-actions">
+<a class="btn btn-primary" href="/research/">
               Explore our research
             </a>
-            <a class="btn btn-secondary" href="/artifacts/">
+<a class="btn btn-secondary" href="/artifacts/">
               Browse research artifacts
             </a>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <div class="hero-emblem">
-            <img
-              class="hero-emblem-base"
-              src="/assets/img/favicon.png"
-              alt=""
-            >
-            <span class="hero-code-sequence" aria-hidden="true">
-              <img class="code-erase" src="/assets/img/hero-animation/code-erase.png" alt="">
-              <img class="code-part code-left" src="/assets/img/hero-animation/code-left.png" alt="">
-              <img class="code-part code-slash" src="/assets/img/hero-animation/code-slash.png" alt="">
-              <img class="code-part code-right" src="/assets/img/hero-animation/code-right.png" alt="">
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESEARCH AREAS -->
-    <section class="section research-areas-section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">What we work on</p>
-            <h2>Research areas</h2>
-          </div>
-          <div>
-            <p>
-              Our research spans software security and privacy, mobile security and malware analysis, trustworthy AI,
-              AI for software engineering, software analysis and quality, and empirical software engineering.
-            </p>
-            <a class="text-link" href="/research/">Explore our research</a>
-          </div>
-        </div>
-
-  <div class="home-research-list">
-
-  <!-- Software Security & Privacy -->
-  <article class="home-research-item">
-    <h3>Software Security &amp; Privacy</h3>
-  </article>
-
-  <!-- Mobile Security & Malware Analysis -->
-  <article class="home-research-item">
-    <h3>Mobile Security &amp; Malware Analysis</h3>
-  </article>
-
-  <!-- Trustworthy AI -->
-  <article class="home-research-item">
-    <h3>Trustworthy AI</h3>
-  </article>
-
-  <!-- AI for Software Engineering -->
-  <article class="home-research-item">
-    <h3>AI for Software Engineering</h3>
-  </article>
-
-  <!-- Software Analysis & Quality -->
-  <article class="home-research-item">
-    <h3>Software Analysis &amp; Quality</h3>
-  </article>
-
-  <!-- Empirical Software Engineering -->
-  <article class="home-research-item">
-    <h3>Empirical Software Engineering</h3>
-  </article>
-
-    </div>
-  </div>
-
-
-      
-    </section>
-
+</div>
+</div>
+<div aria-hidden="true" class="hero-visual">
+<div class="hero-emblem">
+<img alt="" class="hero-emblem-base" src="/assets/img/favicon.png"/>
+<span aria-hidden="true" class="hero-code-sequence">
+<img alt="" class="code-erase" src="/assets/img/hero-animation/code-erase.png"/>
+<img alt="" class="code-part code-left" src="/assets/img/hero-animation/code-left.png"/>
+<img alt="" class="code-part code-slash" src="/assets/img/hero-animation/code-slash.png"/>
+<img alt="" class="code-part code-right" src="/assets/img/hero-animation/code-right.png"/>
+</span>
+</div>
+</div>
+</div>
+</section>
+<!-- RESEARCH AREAS -->
+<section class="section research-areas-section">
+<div class="container">
+<div class="section-head">
+<div>
+<p class="eyebrow">What we work on</p>
+<h2>Research at NEXUS</h2>
+</div>
+<div>
+<p>We study how to make modern software systems more secure, trustworthy, and intelligent through empirical research, software analysis, and AI-driven methods.</p>
+<a class="text-link" href="/research/">Explore our research</a>
+</div>
+</div>
+<div aria-label="NEXUS research pillars" class="home-research-pillars">
+<article class="home-research-pillar">
+<h3>Secure Software</h3>
+<p>Software security and privacy, mobile security, malware analysis, vulnerability detection, and security assurance.</p>
+</article>
+<article class="home-research-pillar">
+<h3>Trustworthy Software &amp; AI</h3>
+<p>Trustworthy AI, LLM reliability, false assurance, privacy, and dependable AI-enabled software systems.</p>
+</article>
+<article class="home-research-pillar">
+<h3>Intelligent Software Engineering</h3>
+<p>AI for software engineering, software analysis and quality, empirical studies, metrics, testing, and automation.</p>
+</article>
+</div>
+</div>
+</section>
 <!-- FEATURED ARTIFACTS -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Featured artifacts</p>
-            <h2>Open research artifacts</h2>
-          </div>
-          <a class="text-link" href="/artifacts/">Browse the catalog</a>
-        </div>
-
-        <div class="card-grid">
-          <article class="card">
-            <div class="card-kicker">Dataset · 2026</div>
-            <h3>AndroMetric</h3>
-            <p>
+<section class="section">
+<div class="container">
+<div class="section-head">
+<div>
+<p class="eyebrow">Featured artifacts</p>
+<h2>Open research artifacts</h2>
+</div>
+<a class="text-link" href="/artifacts/">Browse the catalog</a>
+</div>
+<div class="card-grid">
+<article class="card">
+<div class="card-kicker">Dataset · 2026</div>
+<h3>AndroMetric</h3>
+<p>
               Multi-dimensional software metrics for large-scale Android security and
               software analytics research.
             </p>
-            <div class="tags">
-              <span class="tag">Android</span>
-              <span class="tag">Metrics</span>
-              <span class="tag">Security</span>
-            </div>
-            <div class="card-actions">
-              <a class="mini-link" href="/artifacts/#andrometric">Explore</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-kicker">Dataset · 2026</div>
-            <h3>SMELLDroid</h3>
-            <p>
+<div class="tags">
+<span class="tag">Android</span>
+<span class="tag">Metrics</span>
+<span class="tag">Security</span>
+</div>
+<div class="card-actions">
+<a class="mini-link" href="/artifacts/#andrometric">Explore</a>
+</div>
+</article>
+<article class="card">
+<div class="card-kicker">Dataset · 2026</div>
+<h3>SMELLDroid</h3>
+<p>
               A large-scale dataset for studying Android code smells, maintainability,
               and software quality.
             </p>
-            <div class="tags">
-              <span class="tag">Code smells</span>
-              <span class="tag">Quality</span>
-              <span class="tag">Android</span>
-            </div>
-            <div class="card-actions">
-              <a class="mini-link" href="/artifacts/#smelldroid">Explore</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-kicker">Dataset · 2026</div>
-            <h3>MIRROR</h3>
-            <p>
+<div class="tags">
+<span class="tag">Code smells</span>
+<span class="tag">Quality</span>
+<span class="tag">Android</span>
+</div>
+<div class="card-actions">
+<a class="mini-link" href="/artifacts/#smelldroid">Explore</a>
+</div>
+</article>
+<article class="card">
+<div class="card-kicker">Dataset · 2026</div>
+<h3>MIRROR</h3>
+<p>
               Structural metrics for original and repackaged Android apps, enabling
               repackaging and similarity studies.
             </p>
-            <div class="tags">
-              <span class="tag">Repackaging</span>
-              <span class="tag">Structural metrics</span>
-            </div>
-            <div class="card-actions">
-              <a class="mini-link" href="/artifacts/#mirror">Explore</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- RECENT WORK -->
-    <section class="section section-soft">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Recent work</p>
-            <h2>Selected publications</h2>
-          </div>
-          <a class="text-link" href="/publications/">View publications</a>
-        </div>
-
-        <div class="card-grid">
-
-          <article class="card">
-            <div class="card-kicker">IEEE/ACM ICSE · 2027</div>
-            <h3>When LLMs Say Secure</h3>
-            <p>
+<div class="tags">
+<span class="tag">Repackaging</span>
+<span class="tag">Structural metrics</span>
+</div>
+<div class="card-actions">
+<a class="mini-link" href="/artifacts/#mirror">Explore</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- RECENT WORK -->
+<section class="section section-soft">
+<div class="container">
+<div class="section-head">
+<div>
+<p class="eyebrow">Recent work</p>
+<h2>Selected publications</h2>
+</div>
+<a class="text-link" href="/publications/">View publications</a>
+</div>
+<div class="card-grid">
+<article class="card">
+<div class="card-kicker">IEEE/ACM ICSE · 2027</div>
+<h3>When LLMs Say Secure</h3>
+<p>
               An empirical study of false assurance in Android vulnerability detection.
             </p>
-          </article>
-          
-          <article class="card">
-            <div class="card-kicker">IEEE Access · 2026</div>
-            <h3>Large Language Models for Malware Detection</h3>
-            <p>
+</article>
+<article class="card">
+<div class="card-kicker">IEEE Access · 2026</div>
+<h3>Large Language Models for Malware Detection</h3>
+<p>
               A systematic review, taxonomy, and open challenges for LLM-enabled malware
               detection.
             </p>
-          </article>
-
-          <!-- <article class="card">
+</article>
+<!-- <article class="card">
             <div class="card-kicker">IEEE ICSA · 2026</div>
             <h3>Security-Aware Architectural Smells in Android</h3>
             <p>
               Rethinking MVC violations through a security-aware architectural lens.
             </p>
           </article>-->
-
-          <article class="card">
-            <div class="card-kicker">IEEE ICST · 2026</div>
-            <h3>Automated Android Bug Reproduction with LLMs</h3>
-            <p>
+<article class="card">
+<div class="card-kicker">IEEE ICST · 2026</div>
+<h3>Automated Android Bug Reproduction with LLMs</h3>
+<p>
               Evaluating whether LLMs can reliably reproduce Android application bugs.
             </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CLOSING CTA -->
-    <section class="cta">
-  <div class="container">
-    <div class="cta-box">
-      <div>
-        <h2>Connect with NEXUS Lab</h2>
-        <p>
+</article>
+</div>
+</div>
+</section>
+<!-- CLOSING CTA -->
+<section class="cta">
+<div class="container">
+<div class="cta-box">
+<div>
+<h2>Connect with NEXUS Lab</h2>
+<p>
           Interested in collaboration, student research opportunities, or learning more
           about our work?
         </p>
-      </div>
-
-      <div class="cta-actions">
-        <a class="btn" href="/contact/">Contact Us</a>
-         <!-- <a class="btn" href="/research/">Explore Our Research</a> -->
-      </div>
-    </div>
-  </div>
+</div>
+<div class="cta-actions">
+<a class="btn" href="/contact/">Contact Us</a>
+<!-- <a class="btn" href="/research/">Explore Our Research</a> -->
+</div>
+</div>
+</div>
 </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="/assets/img/nexus-logo.png" alt="NEXUS Lab">
-          <p>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<img alt="NEXUS Lab" src="/assets/img/nexus-logo.png"/>
+<p>
             Secure, Trustworthy, and Intelligent Software Engineering at
             Florida Polytechnic University.
           </p>
-        </div>
-
-        <div class="footer-col">
-          <h3>Explore</h3>
-          <a href="/research/">Research</a>
-          <a href="/people/">People</a>
-          <a href="/publications/">Publications</a>
-          <a href="/artifacts/">Research Artifacts</a>
-        </div>
-
-        <div class="footer-col">
-          <h3>Connect</h3>
-          <a href="https://karim-elish.github.io/" target="_blank" rel="noopener">
+</div>
+<div class="footer-col">
+<h3>Explore</h3>
+<a href="/research/">Research</a>
+<a href="/people/">People</a>
+<a href="/publications/">Publications</a>
+<a href="/artifacts/">Research Artifacts</a>
+</div>
+<div class="footer-col">
+<h3>Connect</h3>
+<a href="https://karim-elish.github.io/" rel="noopener" target="_blank">
             Karim Elish
           </a>
-          <a href="https://floridapoly.edu/" target="_blank" rel="noopener">
+<a href="https://floridapoly.edu/" rel="noopener" target="_blank">
             Florida Polytechnic University
           </a>
-          <a href="mailto:kelish@floridapoly.edu">Email the lab</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© <span data-year></span> NEXUS Lab. Florida Polytechnic University.</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/assets/js/site.js"></script>
+<a href="mailto:kelish@floridapoly.edu">Email the lab</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span data-year=""></span> NEXUS Lab. Florida Polytechnic University.</span>
+</div>
+</div>
+</footer>
+<script src="/assets/js/site.js"></script>
 </body>
 </html>
