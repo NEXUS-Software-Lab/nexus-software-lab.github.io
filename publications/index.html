@@ -307,7 +307,7 @@
 
 
 
-<style id="publication-year-groups-and-types">
+<style id="publication-year-groups-original-style">
   .pub-year-group {
     margin-top: 28px;
   }
@@ -317,14 +317,11 @@
   }
 
   .pub-year-heading {
-    margin: 0 0 4px;
-    padding: 0 0 9px;
-    border-bottom: 2px solid #dbe6f0;
-    color: var(--navy);
-    font-size: 1.08rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: .01em;
+    display: block;
+    width: auto;
+    margin: 0 0 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
   }
 
   .pub.pub-grouped {
@@ -342,15 +339,15 @@
     gap: 7px;
   }
 
-  .pub-type-badge {
+  .pub-type-tag {
     display: inline-flex;
     align-items: center;
     flex: 0 0 auto;
     padding: 2px 7px;
-    border: 1px solid #cddbeb;
+    border: 1px solid var(--line);
     border-radius: 999px;
-    background: #f5f9fd;
-    color: var(--navy);
+    background: transparent;
+    color: var(--muted);
     font-size: .68rem;
     font-weight: 700;
     line-height: 1.25;
@@ -361,10 +358,6 @@
   @media (max-width: 720px) {
     .pub-year-group {
       margin-top: 23px;
-    }
-
-    .pub-year-heading {
-      font-size: 1.02rem;
     }
 
     .pub-venue-line {
@@ -813,7 +806,7 @@
             <p class="authors">${publication.authors}</p>
             <p class="venue pub-venue-line">
               <span>${publication.venue}</span>
-              ${publicationType ? `<span class="pub-type-badge">${publicationType}</span>` : ""}
+              ${publicationType ? `<span class="pub-type-tag">${publicationType}</span>` : ""}
             </p>
             ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
           </div>
@@ -863,8 +856,8 @@
 
         list.innerHTML = [...grouped.entries()]
           .map(([year, yearPublications]) => `
-            <section class="pub-year-group" aria-labelledby="pub-year-${year}">
-              <h2 class="pub-year-heading" id="pub-year-${year}">${year}</h2>
+            <section class="pub-year-group" aria-label="Publications from ${year}">
+              <div class="pub-year pub-year-heading">${year}</div>
               <div class="pub-year-items">
                 ${yearPublications.map(renderPublication).join("")}
               </div>
