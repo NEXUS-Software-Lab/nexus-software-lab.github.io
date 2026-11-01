@@ -22,7 +22,7 @@
 
   .filter-row {
     display: grid;
-    grid-template-columns: minmax(300px, 1fr) 230px 230px auto;
+    grid-template-columns: minmax(280px, 1fr) 210px 210px 210px auto;
     gap: 12px;
     align-items: stretch;
     margin: 24px 0 10px;
@@ -308,6 +308,7 @@
 
 
 
+
 <style id="publication-year-groups-original-style">
   .pub-year-group {
     margin-top: 30px;
@@ -331,32 +332,12 @@
   }
 
   .pub.pub-grouped {
-    position: relative;
     grid-template-columns: minmax(0, 1fr) !important;
     margin: 0 !important;
   }
 
   .pub.pub-grouped .pub-body {
     min-width: 0;
-    padding-right: 105px;
-  }
-
-  .pub-venue-line {
-    display: block;
-  }
-
-  .pub-type-tag {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    display: block;
-    color: var(--blue);
-    font-size: .76rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: .035em;
-    text-transform: uppercase;
-    white-space: nowrap;
   }
 
   @media (max-width: 720px) {
@@ -367,19 +348,9 @@
     .pub-year-items {
       gap: 12px;
     }
-
-    .pub.pub-grouped .pub-body {
-      padding-right: 0;
-      padding-top: 22px;
-    }
-
-    .pub-type-tag {
-      top: 10px;
-      right: 12px;
-      font-size: .72rem;
-    }
   }
 </style>
+
 
 
 </head>
@@ -416,7 +387,7 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Publication highlights</p>
+        <p class="eyebrow">A selection of publications from 2019 onward</p>
         <h2>Recent and selected publications</h2>
       </div>
     </div>
@@ -513,6 +484,47 @@
           </div>
         </div>
 
+        <div class="filter-dropdown">
+          <button
+            id="type-trigger"
+            class="filter-trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="type-panel"
+          >
+            <span class="filter-trigger-main">
+              <span class="filter-trigger-label">Publication type</span>
+              <span id="type-trigger-value" class="filter-trigger-value">All publication types</span>
+            </span>
+            <span class="filter-chevron">▾</span>
+          </button>
+
+          <div id="type-panel" class="filter-panel" hidden>
+            <div class="filter-panel-head">
+              <div>
+                <strong>Filter by publication type</strong>
+                <span id="type-meta"></span>
+              </div>
+              <button id="type-close" class="filter-close" type="button" aria-label="Close publication type filter">×</button>
+            </div>
+
+            <input
+              id="type-find"
+              class="filter-find"
+              type="search"
+              placeholder="Find a publication type…"
+              aria-label="Find a publication type"
+            >
+
+            <div id="type-list" class="filter-list"></div>
+
+            <div class="filter-panel-actions">
+              <button id="type-clear" class="filter-clear" type="button">Clear types</button>
+              <button id="type-done" class="filter-done" type="button">Done</button>
+            </div>
+          </div>
+        </div>
+
         <button id="reset-filters" class="reset-filters" type="button" disabled>
           Reset all filters
         </button>
@@ -576,6 +588,7 @@
 
     const selectedAreas = new Set();
     const selectedTopics = new Set();
+    const selectedTypes = new Set();
 
     const normalize = (value) => String(value || "").trim().toLowerCase();
 
@@ -749,6 +762,25 @@
       })
     );
 
+    dropdowns.push(
+      createDropdown({
+        trigger: "type-trigger",
+        triggerValue: "type-trigger-value",
+        panel: "type-panel",
+        find: "type-find",
+        list: "type-list",
+        meta: "type-meta",
+        clear: "type-clear",
+        done: "type-done",
+        close: "type-close",
+        counts: typeCounts,
+        selected: selectedTypes,
+        allLabel: "All publication types",
+        metaLabel: "publication types",
+        singular: "type"
+      })
+    );
+
     function matchesAny(values, selected) {
       if (selected.size === 0) return true;
       const set = new Set(Array.isArray(values) ? values : []);
@@ -812,16 +844,24 @@
       return "";
     }
 
-    function renderPublication(publication) {
+    const typeCounts = new Map();
+    publications.forEach((publication) => {
       const publicationType = getPublicationType(publication);
+      if (publicationType) {
+        typeCounts.set(
+          publicationType,
+          (typeCounts.get(publicationType) || 0) + 1
+        );
+      }
+    });
 
+    function renderPublication(publication) {
       return `
         <article class="pub pub-grouped">
-          ${publicationType ? `<span class="pub-type-tag">${publicationType}</span>` : ""}
           <div class="pub-body">
             <h2>${publication.title}</h2>
             <p class="authors">${publication.authors}</p>
-            <p class="venue pub-venue-line">${publication.venue}</p>
+            <p class="venue">${publication.venue}</p>
             ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
           </div>
         </article>
@@ -847,7 +887,11 @@
         const matchesAreas = matchesAny(publication.areas, selectedAreas);
         const matchesTopics = matchesAny(publication.topics, selectedTopics);
 
-        return matchesKeyword && matchesAreas && matchesTopics;
+        const publicationType = getPublicationType(publication);
+        const matchesType =
+          selectedTypes.size === 0 || selectedTypes.has(publicationType);
+
+        return matchesKeyword && matchesAreas && matchesTopics && matchesType;
       });
 
       const sorted = [...filtered].sort((a, b) => {
@@ -885,7 +929,10 @@
 
       const keywordActive = normalize(search.value).length > 0;
       const hasFilters =
-        keywordActive || selectedAreas.size > 0 || selectedTopics.size > 0;
+        keywordActive ||
+        selectedAreas.size > 0 ||
+        selectedTopics.size > 0 ||
+        selectedTypes.size > 0;
 
       reset.disabled = !hasFilters;
 
@@ -893,6 +940,7 @@
       if (keywordActive) parts.push(`keyword: “${search.value.trim()}”`);
       if (selectedAreas.size) parts.push(`${selectedAreas.size} research area${selectedAreas.size === 1 ? "" : "s"}`);
       if (selectedTopics.size) parts.push(`${selectedTopics.size} topic${selectedTopics.size === 1 ? "" : "s"}`);
+      if (selectedTypes.size) parts.push(`${selectedTypes.size} publication type${selectedTypes.size === 1 ? "" : "s"}`);
 
       summary.innerHTML = hasFilters
         ? `<strong>Active filters:</strong> ${parts.join(" · ")}`
