@@ -23,34 +23,8 @@
   }
 
   function getPublicationType(publication) {
-    const explicitType = normalize(
-      publication.type || publication.kind || publication.publicationType
-    );
-
-    if (explicitType.includes("workshop")) return "Workshop";
-    if (explicitType.includes("journal")) return "Journal";
-    if (explicitType.includes("conference")) return "Conference";
-
-    const venue = normalize(publication.venue);
-
-    if (venue.includes("workshop")) return "Workshop";
-
-    const journalIndicators = [
-      "journal",
-      "transactions",
-      "magazine",
-      "ieee software",
-      "ieee internet computing",
-      "ieee access",
-      "computers & security",
-      "information,"
-    ];
-
-    if (journalIndicators.some((indicator) => venue.includes(indicator))) {
-      return "Journal";
-    }
-
-    return "Conference";
+    const type = String(publication.type || "").trim();
+    return type || "Publication";
   }
 
   function makeCounts(getValues) {
@@ -66,17 +40,9 @@
     return counts;
   }
 
-  const areaCounts = makeCounts((publication) =>
-    valuesFor(publication, "areas", "area")
-  );
-
-  const topicCounts = makeCounts((publication) =>
-    valuesFor(publication, "topics", "topic")
-  );
-
-  const typeCounts = makeCounts((publication) => [
-    getPublicationType(publication)
-  ]);
+  const areaCounts = makeCounts((p) => valuesFor(p, "areas", "area"));
+  const topicCounts = makeCounts((p) => valuesFor(p, "topics", "topic"));
+  const typeCounts = makeCounts((p) => [getPublicationType(p)]);
 
   const dropdowns = [];
 
@@ -97,12 +63,8 @@
     const done = document.getElementById(config.done);
     const close = document.getElementById(config.close);
 
-    if (
-      !trigger || !triggerValue || !panel || !find || !listBox ||
-      !meta || !clear || !done || !close
-    ) {
-      return null;
-    }
+    if (!trigger || !triggerValue || !panel || !find || !listBox ||
+        !meta || !clear || !done || !close) return null;
 
     function closePanel() {
       panel.hidden = true;
@@ -126,7 +88,6 @@
       listBox.innerHTML = values.length
         ? values.map((value) => {
             const active = config.selected.has(value);
-
             return `
               <button
                 class="filter-option ${active ? "active" : ""}"
@@ -145,12 +106,9 @@
       listBox.querySelectorAll("[data-filter-value]").forEach((button) => {
         button.addEventListener("click", () => {
           const value = button.dataset.filterValue;
-
-          if (config.selected.has(value)) {
-            config.selected.delete(value);
-          } else {
-            config.selected.add(value);
-          }
+          config.selected.has(value)
+            ? config.selected.delete(value)
+            : config.selected.add(value);
 
           renderOptions();
           updateTrigger();
@@ -160,14 +118,11 @@
     }
 
     function updateTrigger() {
-      const numberSelected = config.selected.size;
-
+      const n = config.selected.size;
       triggerValue.textContent =
-        numberSelected === 0
-          ? config.allLabel
-          : numberSelected === 1
-            ? [...config.selected][0]
-            : `${numberSelected} selected`;
+        n === 0 ? config.allLabel :
+        n === 1 ? [...config.selected][0] :
+        `${n} selected`;
 
       meta.textContent =
         `${config.counts.size} ${config.metaLabel} · match any selected ${config.singular}`;
@@ -184,16 +139,13 @@
     trigger.addEventListener("click", () => {
       panel.hidden ? openPanel() : closePanel();
     });
-
     find.addEventListener("input", renderOptions);
-
     clear.addEventListener("click", () => {
       config.selected.clear();
       renderOptions();
       updateTrigger();
       render();
     });
-
     done.addEventListener("click", closePanel);
     close.addEventListener("click", closePanel);
 
@@ -203,58 +155,29 @@
     return { panel, closePanel, resetDropdown };
   }
 
-  const dropdownConfigs = [
+  [
     {
-      trigger: "area-trigger",
-      triggerValue: "area-trigger-value",
-      panel: "area-panel",
-      find: "area-find",
-      list: "area-list",
-      meta: "area-meta",
-      clear: "area-clear",
-      done: "area-done",
-      close: "area-close",
-      counts: areaCounts,
-      selected: selectedAreas,
-      allLabel: "All research areas",
-      metaLabel: "research areas",
-      singular: "area"
+      trigger: "area-trigger", triggerValue: "area-trigger-value",
+      panel: "area-panel", find: "area-find", list: "area-list",
+      meta: "area-meta", clear: "area-clear", done: "area-done",
+      close: "area-close", counts: areaCounts, selected: selectedAreas,
+      allLabel: "All research areas", metaLabel: "research areas", singular: "area"
     },
     {
-      trigger: "topic-trigger",
-      triggerValue: "topic-trigger-value",
-      panel: "topic-panel",
-      find: "topic-find",
-      list: "topic-list",
-      meta: "topic-meta",
-      clear: "topic-clear",
-      done: "topic-done",
-      close: "topic-close",
-      counts: topicCounts,
-      selected: selectedTopics,
-      allLabel: "All topics",
-      metaLabel: "topics",
-      singular: "topic"
+      trigger: "topic-trigger", triggerValue: "topic-trigger-value",
+      panel: "topic-panel", find: "topic-find", list: "topic-list",
+      meta: "topic-meta", clear: "topic-clear", done: "topic-done",
+      close: "topic-close", counts: topicCounts, selected: selectedTopics,
+      allLabel: "All topics", metaLabel: "topics", singular: "topic"
     },
     {
-      trigger: "type-trigger",
-      triggerValue: "type-trigger-value",
-      panel: "type-panel",
-      find: "type-find",
-      list: "type-list",
-      meta: "type-meta",
-      clear: "type-clear",
-      done: "type-done",
-      close: "type-close",
-      counts: typeCounts,
-      selected: selectedTypes,
-      allLabel: "All publication types",
-      metaLabel: "publication types",
-      singular: "type"
+      trigger: "type-trigger", triggerValue: "type-trigger-value",
+      panel: "type-panel", find: "type-find", list: "type-list",
+      meta: "type-meta", clear: "type-clear", done: "type-done",
+      close: "type-close", counts: typeCounts, selected: selectedTypes,
+      allLabel: "All publication types", metaLabel: "publication types", singular: "type"
     }
-  ];
-
-  dropdownConfigs.forEach((config) => {
+  ].forEach((config) => {
     const dropdown = createDropdown(config);
     if (dropdown) dropdowns.push(dropdown);
   });
@@ -265,17 +188,94 @@
     return [...selected].some((value) => set.has(value));
   }
 
-  function renderPublication(publication) {
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function resourceLinks(publication, index) {
+    const links = [];
+
+    if (publication.paper) {
+      links.push(`<a class="pub-action" href="${publication.paper}" target="_blank" rel="noopener">Paper</a>`);
+    }
+    if (publication.data) {
+      links.push(`<a class="pub-action" href="${publication.data}" target="_blank" rel="noopener">Data</a>`);
+    }
+    if (publication.repo) {
+      links.push(`<a class="pub-action" href="${publication.repo}" target="_blank" rel="noopener">Repo</a>`);
+    }
+    if (publication.citation) {
+      links.push(
+        `<button class="pub-action pub-citation-toggle" type="button" data-citation-target="citation-${index}" aria-expanded="false">Citation</button>`
+      );
+    }
+
+    return links.length
+      ? `<div class="pub-actions">${links.join('<span class="pub-action-sep" aria-hidden="true">·</span>')}</div>`
+      : "";
+  }
+
+  function citationPanel(publication, index) {
+    if (!publication.citation) return "";
+
     return `
-      <article class="pub pub-grouped">
+      <div class="pub-citation-panel" id="citation-${index}" hidden>
+        <div class="pub-citation-head">
+          <span>BibTeX</span>
+          <button class="pub-copy-citation" type="button" data-copy-citation="citation-code-${index}">Copy</button>
+        </div>
+        <pre id="citation-code-${index}"><code>${escapeHtml(publication.citation)}</code></pre>
+      </div>
+    `;
+  }
+
+  function renderPublication(publication, index) {
+    const type = getPublicationType(publication);
+
+    return `
+      <article class="pub">
+        <div class="pub-year">${publication.year}</div>
         <div class="pub-body">
           <h2>${publication.title}</h2>
           <p class="authors">${publication.authors}</p>
-          <p class="venue">${publication.venue}</p>
+          <p class="venue"><span class="pub-type-label">[${type}]</span> ${publication.venue}</p>
           ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
+          ${resourceLinks(publication, index)}
+          ${citationPanel(publication, index)}
         </div>
       </article>
     `;
+  }
+
+  function bindPublicationActions() {
+    list.querySelectorAll(".pub-citation-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const panel = document.getElementById(button.dataset.citationTarget);
+        if (!panel) return;
+        const willOpen = panel.hidden;
+        panel.hidden = !willOpen;
+        button.setAttribute("aria-expanded", String(willOpen));
+      });
+    });
+
+    list.querySelectorAll("[data-copy-citation]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = document.getElementById(button.dataset.copyCitation);
+        if (!target) return;
+
+        try {
+          await navigator.clipboard.writeText(target.textContent);
+          const oldText = button.textContent;
+          button.textContent = "Copied";
+          setTimeout(() => { button.textContent = oldText; }, 1200);
+        } catch (error) {
+          button.textContent = "Select text";
+        }
+      });
+    });
   }
 
   function render() {
@@ -284,64 +284,44 @@
     const filtered = publications.filter((publication) => {
       const areas = valuesFor(publication, "areas", "area");
       const topics = valuesFor(publication, "topics", "topic");
-      const publicationType = getPublicationType(publication);
+      const type = getPublicationType(publication);
 
       const searchable = [
         publication.title,
         publication.authors,
         publication.venue,
-        publicationType,
+        type,
         ...areas,
         ...topics
       ].join(" ").toLowerCase();
 
-      const matchesKeyword = !needle || searchable.includes(needle);
-      const matchesAreas = matchesAny(areas, selectedAreas);
-      const matchesTopics = matchesAny(topics, selectedTopics);
-      const matchesType =
-        selectedTypes.size === 0 || selectedTypes.has(publicationType);
-
-      return matchesKeyword && matchesAreas && matchesTopics && matchesType;
+      return (
+        (!needle || searchable.includes(needle)) &&
+        matchesAny(areas, selectedAreas) &&
+        matchesAny(topics, selectedTopics) &&
+        (selectedTypes.size === 0 || selectedTypes.has(type))
+      );
     });
 
     const sorted = [...filtered].sort((a, b) => {
-      const yearA = Number.parseInt(a.year, 10) || 0;
-      const yearB = Number.parseInt(b.year, 10) || 0;
-      return yearB - yearA;
+      const yearDiff = (Number(b.year) || 0) - (Number(a.year) || 0);
+      if (yearDiff !== 0) return yearDiff;
+      return publications.indexOf(a) - publications.indexOf(b);
     });
 
     if (count) {
-      count.textContent =
-        `${filtered.length} publication${filtered.length === 1 ? "" : "s"}`;
+      count.textContent = `${sorted.length} publication${sorted.length === 1 ? "" : "s"}`;
     }
 
-    if (sorted.length) {
-      const grouped = new Map();
+    list.innerHTML = sorted.length
+      ? sorted.map((publication, index) => renderPublication(publication, index)).join("")
+      : '<div class="empty">No publications match the current filters.</div>';
 
-      sorted.forEach((publication) => {
-        const year = publication.year || "Other";
-        if (!grouped.has(year)) grouped.set(year, []);
-        grouped.get(year).push(publication);
-      });
+    bindPublicationActions();
 
-      list.innerHTML = [...grouped.entries()]
-        .map(([year, yearPublications]) => `
-          <section class="pub-year-group" aria-label="Publications from ${year}">
-            <div class="pub-year pub-year-heading">${year}</div>
-            <div class="pub-year-items">
-              ${yearPublications.map(renderPublication).join("")}
-            </div>
-          </section>
-        `)
-        .join("");
-    } else {
-      list.innerHTML =
-        '<div class="empty">No publications match the current filters.</div>';
-    }
-
-    const keywordActive = needle.length > 0;
+    const hasKeyword = needle.length > 0;
     const hasFilters =
-      keywordActive ||
+      hasKeyword ||
       selectedAreas.size > 0 ||
       selectedTopics.size > 0 ||
       selectedTypes.size > 0;
@@ -350,28 +330,10 @@
 
     if (summary) {
       const parts = [];
-
-      if (keywordActive) {
-        parts.push(`keyword: “${search.value.trim()}”`);
-      }
-
-      if (selectedAreas.size) {
-        parts.push(
-          `${selectedAreas.size} research area${selectedAreas.size === 1 ? "" : "s"}`
-        );
-      }
-
-      if (selectedTopics.size) {
-        parts.push(
-          `${selectedTopics.size} topic${selectedTopics.size === 1 ? "" : "s"}`
-        );
-      }
-
-      if (selectedTypes.size) {
-        parts.push(
-          `${selectedTypes.size} publication type${selectedTypes.size === 1 ? "" : "s"}`
-        );
-      }
+      if (hasKeyword) parts.push(`keyword: “${search.value.trim()}”`);
+      if (selectedAreas.size) parts.push(`${selectedAreas.size} research area${selectedAreas.size === 1 ? "" : "s"}`);
+      if (selectedTopics.size) parts.push(`${selectedTopics.size} topic${selectedTopics.size === 1 ? "" : "s"}`);
+      if (selectedTypes.size) parts.push(`${selectedTypes.size} publication type${selectedTypes.size === 1 ? "" : "s"}`);
 
       summary.innerHTML = hasFilters
         ? `<strong>Active filters:</strong> ${parts.join(" · ")}`
@@ -379,9 +341,7 @@
     }
   }
 
-  if (search) {
-    search.addEventListener("input", render);
-  }
+  if (search) search.addEventListener("input", render);
 
   if (reset) {
     reset.addEventListener("click", () => {
@@ -392,8 +352,7 @@
   }
 
   document.addEventListener("click", (event) => {
-    const clickedInsideDropdown = event.target.closest(".filter-dropdown");
-    if (!clickedInsideDropdown) closeAllPanels();
+    if (!event.target.closest(".filter-dropdown")) closeAllPanels();
   });
 
   render();
