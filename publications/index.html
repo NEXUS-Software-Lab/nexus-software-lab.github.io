@@ -309,49 +309,114 @@
 
 
 
-<style id="publication-year-groups-original-style">
-  .pub-year-group {
-    margin-top: 30px;
-  }
 
-  .pub-year-group:first-child {
-    margin-top: 10px;
-  }
 
-  .pub-year-heading {
-    display: block;
-    width: auto;
-    margin: 0 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--line);
-  }
 
-  .pub-year-items {
+
+
+<style id="publication-entry-resources">
+  /* Keep the original year-at-left publication layout. */
+  .pub-list {
     display: grid;
     gap: 14px;
   }
 
-  .pub.pub-grouped {
-    grid-template-columns: minmax(0, 1fr) !important;
-    margin: 0 !important;
+  .pub-type-label {
+    color: var(--blue);
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .01em;
+    white-space: nowrap;
   }
 
-  .pub.pub-grouped .pub-body {
-    min-width: 0;
+  .pub-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    margin-top: 8px;
+  }
+
+  .pub-action {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--blue);
+    font: inherit;
+    font-size: .80rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .pub-action:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .pub-action-sep {
+    color: var(--muted);
+    font-size: .78rem;
+  }
+
+  .pub-citation-panel {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #f8fbfe;
+  }
+
+  .pub-citation-panel[hidden] {
+    display: none;
+  }
+
+  .pub-citation-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: .74rem;
+    font-weight: 700;
+  }
+
+  .pub-copy-citation {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .pub-citation-panel pre {
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--ink);
+    font-size: .74rem;
+    line-height: 1.45;
   }
 
   @media (max-width: 720px) {
-    .pub-year-group {
-      margin-top: 24px;
+    .pub-list {
+      gap: 12px;
     }
 
-    .pub-year-items {
-      gap: 12px;
+    .pub-type-label {
+      font-size: .75rem;
+    }
+
+    .pub-actions {
+      margin-top: 7px;
     }
   }
 </style>
-
-
 
 </head>
 <body>
@@ -388,7 +453,7 @@
     <div class="section-head">
       <div>
         <p class="eyebrow">A selection of recent publications</p>
-        <h2>Conference &amp; Journal Publications</h2>
+        <h2>Journal, Conference &amp; Workshop Publications</h2>
       </div>
     </div>
 
