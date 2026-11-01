@@ -306,6 +306,73 @@
 </style>
 
 
+
+<style id="publication-year-groups-and-types">
+  .pub-year-group {
+    margin-top: 28px;
+  }
+
+  .pub-year-group:first-child {
+    margin-top: 10px;
+  }
+
+  .pub-year-heading {
+    margin: 0 0 4px;
+    padding: 0 0 9px;
+    border-bottom: 2px solid #dbe6f0;
+    color: var(--navy);
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: .01em;
+  }
+
+  .pub.pub-grouped {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .pub.pub-grouped .pub-body {
+    min-width: 0;
+  }
+
+  .pub-venue-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 7px;
+  }
+
+  .pub-type-badge {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    padding: 2px 7px;
+    border: 1px solid #cddbeb;
+    border-radius: 999px;
+    background: #f5f9fd;
+    color: var(--navy);
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: .02em;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 720px) {
+    .pub-year-group {
+      margin-top: 23px;
+    }
+
+    .pub-year-heading {
+      font-size: 1.02rem;
+    }
+
+    .pub-venue-line {
+      gap: 6px;
+    }
+  }
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -679,6 +746,81 @@
       return [...selected].some((value) => set.has(value));
     }
 
+    function getPublicationType(publication) {
+      const explicitType = normalize(
+        publication.type || publication.kind || publication.publicationType
+      );
+
+      if (explicitType.includes("workshop")) return "Workshop";
+      if (explicitType.includes("journal")) return "Journal";
+      if (explicitType.includes("conference")) return "Conference";
+
+      const venue = normalize(publication.venue);
+
+      if (venue.includes("workshop")) return "Workshop";
+
+      const journalIndicators = [
+        "journal",
+        "transactions",
+        "magazine",
+        "ieee software",
+        "ieee internet computing",
+        "computers & security",
+        "software: practice and experience",
+        "information and software technology",
+        "empirical software engineering",
+        "applied sciences"
+      ];
+
+      if (journalIndicators.some((indicator) => venue.includes(indicator))) {
+        return "Journal";
+      }
+
+      const conferenceIndicators = [
+        "conference",
+        "symposium",
+        "proceedings",
+        "icse",
+        "msr",
+        "icsa",
+        "saner",
+        "mobilesoft",
+        "kdd",
+        "icpc",
+        "secdev",
+        "sera",
+        "securecomm",
+        "codaspy",
+        "acsac",
+        "asiaccs",
+        "ccs"
+      ];
+
+      if (conferenceIndicators.some((indicator) => venue.includes(indicator))) {
+        return "Conference";
+      }
+
+      return "";
+    }
+
+    function renderPublication(publication) {
+      const publicationType = getPublicationType(publication);
+
+      return `
+        <article class="pub pub-grouped">
+          <div class="pub-body">
+            <h2>${publication.title}</h2>
+            <p class="authors">${publication.authors}</p>
+            <p class="venue pub-venue-line">
+              <span>${publication.venue}</span>
+              ${publicationType ? `<span class="pub-type-badge">${publicationType}</span>` : ""}
+            </p>
+            ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
+          </div>
+        </article>
+      `;
+    }
+
     function render() {
       const needle = normalize(search.value);
 
@@ -687,6 +829,9 @@
           publication.title,
           publication.authors,
           publication.venue,
+          publication.type,
+          publication.kind,
+          publication.publicationType,
           ...(Array.isArray(publication.areas) ? publication.areas : []),
           ...(Array.isArray(publication.topics) ? publication.topics : [])
         ].join(" ").toLowerCase();
@@ -698,22 +843,38 @@
         return matchesKeyword && matchesAreas && matchesTopics;
       });
 
+      const sorted = [...filtered].sort((a, b) => {
+        const yearA = Number.parseInt(a.year, 10) || 0;
+        const yearB = Number.parseInt(b.year, 10) || 0;
+        return yearB - yearA;
+      });
+
       count.textContent =
         `${filtered.length} publication${filtered.length === 1 ? "" : "s"}`;
 
-      list.innerHTML = filtered.length
-        ? filtered.map((publication) => `
-            <article class="pub">
-              <div class="pub-year">${publication.year}</div>
-              <div>
-                <h2>${publication.title}</h2>
-                <p class="authors">${publication.authors}</p>
-                <p class="venue">${publication.venue}</p>
-                ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
+      if (sorted.length) {
+        const grouped = new Map();
+
+        sorted.forEach((publication) => {
+          const year = publication.year || "Other";
+          if (!grouped.has(year)) grouped.set(year, []);
+          grouped.get(year).push(publication);
+        });
+
+        list.innerHTML = [...grouped.entries()]
+          .map(([year, yearPublications]) => `
+            <section class="pub-year-group" aria-labelledby="pub-year-${year}">
+              <h2 class="pub-year-heading" id="pub-year-${year}">${year}</h2>
+              <div class="pub-year-items">
+                ${yearPublications.map(renderPublication).join("")}
               </div>
-            </article>
-          `).join("")
-        : '<div class="empty">No publications match the current filters.</div>';
+            </section>
+          `)
+          .join("");
+      } else {
+        list.innerHTML =
+          '<div class="empty">No publications match the current filters.</div>';
+      }
 
       const keywordActive = normalize(search.value).length > 0;
       const hasFilters =
