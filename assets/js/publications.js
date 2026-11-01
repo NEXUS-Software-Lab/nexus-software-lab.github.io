@@ -214,7 +214,7 @@
     }
 
     return links.length
-      ? `<div class="pub-actions">${links.join('<span class="pub-action-sep" aria-hidden="true">·</span>')}</div>`
+      ? `<div class="pub-actions">${links.join("")}</div>`
       : "";
   }
 
@@ -237,11 +237,14 @@
 
     return `
       <article class="pub">
-        <div class="pub-year">${publication.year}</div>
+        <div class="pub-side-meta">
+          <div class="pub-year">${publication.year}</div>
+          <div class="pub-type-label">[${type}]</div>
+        </div>
         <div class="pub-body">
           <h2>${publication.title}</h2>
           <p class="authors">${publication.authors}</p>
-          <p class="venue"><span class="pub-type-label">[${type}]</span> ${publication.venue}</p>
+          <p class="venue">${publication.venue}</p>
           ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
           ${resourceLinks(publication, index)}
           ${citationPanel(publication, index)}
