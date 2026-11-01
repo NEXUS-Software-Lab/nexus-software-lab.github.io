@@ -307,9 +307,10 @@
 
 
 
+
 <style id="publication-year-groups-original-style">
   .pub-year-group {
-    margin-top: 28px;
+    margin-top: 30px;
   }
 
   .pub-year-group:first-child {
@@ -319,52 +320,67 @@
   .pub-year-heading {
     display: block;
     width: auto;
-    margin: 0 0 8px;
+    margin: 0 0 12px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--line);
   }
 
+  .pub-year-items {
+    display: grid;
+    gap: 14px;
+  }
+
   .pub.pub-grouped {
+    position: relative;
     grid-template-columns: minmax(0, 1fr) !important;
+    margin: 0 !important;
   }
 
   .pub.pub-grouped .pub-body {
     min-width: 0;
+    padding-right: 105px;
   }
 
   .pub-venue-line {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 7px;
+    display: block;
   }
 
   .pub-type-tag {
-    display: inline-flex;
-    align-items: center;
-    flex: 0 0 auto;
-    padding: 2px 7px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--muted);
-    font-size: .68rem;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: .02em;
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    display: block;
+    color: var(--blue);
+    font-size: .76rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: .035em;
+    text-transform: uppercase;
     white-space: nowrap;
   }
 
   @media (max-width: 720px) {
     .pub-year-group {
-      margin-top: 23px;
+      margin-top: 24px;
     }
 
-    .pub-venue-line {
-      gap: 6px;
+    .pub-year-items {
+      gap: 12px;
+    }
+
+    .pub.pub-grouped .pub-body {
+      padding-right: 0;
+      padding-top: 22px;
+    }
+
+    .pub-type-tag {
+      top: 10px;
+      right: 12px;
+      font-size: .72rem;
     }
   }
 </style>
+
 
 </head>
 <body>
@@ -391,7 +407,7 @@
 <div class="container">
 
 <h1>Publications</h1>
-<p>Selected publications from NEXUS Lab.</p>
+
 
 </section>
 
@@ -801,13 +817,11 @@
 
       return `
         <article class="pub pub-grouped">
+          ${publicationType ? `<span class="pub-type-tag">${publicationType}</span>` : ""}
           <div class="pub-body">
             <h2>${publication.title}</h2>
             <p class="authors">${publication.authors}</p>
-            <p class="venue pub-venue-line">
-              <span>${publication.venue}</span>
-              ${publicationType ? `<span class="pub-type-tag">${publicationType}</span>` : ""}
-            </p>
+            <p class="venue pub-venue-line">${publication.venue}</p>
             ${publication.award ? `<span class="award">${publication.award}</span>` : ""}
           </div>
         </article>
