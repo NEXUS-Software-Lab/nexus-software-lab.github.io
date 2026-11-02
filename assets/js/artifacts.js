@@ -33,7 +33,6 @@
       ],
       demo: "https://agent-pr-dashboard.vercel.app/",
       repo: "https://github.com/GurjasChalana/Agent-PR-Dashboard",
-      venueTag: <!-- "EMSE 2026 · Under Review" -->,
       citation: `@software{ChalanaElish2026SecAIDev,
   author = {Gurjas Chalana and Karim Elish},
   title  = {SecAIDev: Security Assurance in Agent-Authored Pull Requests},
@@ -373,8 +372,10 @@
 
     if (item.citation) {
       links.push(
-        `<button class="mini-link artifact-citation-toggle" type="button"
-          data-citation-target="citation-${item.id}" aria-expanded="false">Citation</button>`
+        `<a class="mini-link artifact-citation-toggle"
+          href="#citation-${item.id}"
+          data-citation-target="citation-${item.id}"
+          aria-expanded="false">Citation</a>`
       );
     }
 
@@ -403,14 +404,16 @@
   }
 
   function bindCitationActions() {
-    grid.querySelectorAll(".artifact-citation-toggle").forEach((button) => {
-      button.addEventListener("click", () => {
-        const panel = document.getElementById(button.dataset.citationTarget);
+    grid.querySelectorAll(".artifact-citation-toggle").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const panel = document.getElementById(link.dataset.citationTarget);
         if (!panel) return;
 
         const willOpen = panel.hidden;
         panel.hidden = !willOpen;
-        button.setAttribute("aria-expanded", String(willOpen));
+        link.setAttribute("aria-expanded", String(willOpen));
       });
     });
 
@@ -469,7 +472,6 @@
             ${renderVisual(item)}
           </div>
 
-          <div class="authors">${item.authors}</div>
           <p>${item.description}</p>
 
           ${renderVenueTag(item)}
