@@ -32,7 +32,15 @@
         "Empirical Study"
       ],
       demo: "https://agent-pr-dashboard.vercel.app/",
-      repo: "https://github.com/GurjasChalana/Agent-PR-Dashboard"
+      repo: "https://github.com/GurjasChalana/Agent-PR-Dashboard",
+      venueTag: "EMSE 2026 · Under Review",
+      citation: `@software{ChalanaElish2026SecAIDev,
+  author = {Gurjas Chalana and Karim Elish},
+  title  = {SecAIDev: Security Assurance in Agent-Authored Pull Requests},
+  year   = {2026},
+  url    = {https://agent-pr-dashboard.vercel.app/},
+  note   = {Research software; associated manuscript under review at Empirical Software Engineering}
+}`
     });
   }
 
@@ -337,6 +345,13 @@
     `;
   }
 
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
   function renderActions(item) {
     const links = [];
 
@@ -356,7 +371,64 @@
       links.push(`<a class="mini-link" href="${item.repo}" target="_blank" rel="noopener">Repository</a>`);
     }
 
+    if (item.citation) {
+      links.push(
+        `<button class="mini-link artifact-citation-toggle" type="button"
+          data-citation-target="citation-${item.id}" aria-expanded="false">Citation</button>`
+      );
+    }
+
     return links.join("");
+  }
+
+  function renderVenueTag(item) {
+    return item.venueTag
+      ? `<div class="artifact-venue-row"><span class="artifact-venue-tag">${item.venueTag}</span></div>`
+      : "";
+  }
+
+  function renderCitation(item) {
+    if (!item.citation) return "";
+
+    return `
+      <div class="artifact-citation-panel" id="citation-${item.id}" hidden>
+        <div class="artifact-citation-head">
+          <span>BibTeX</span>
+          <button class="artifact-copy-citation" type="button"
+            data-copy-citation="citation-code-${item.id}">Copy</button>
+        </div>
+        <pre id="citation-code-${item.id}"><code>${escapeHtml(item.citation)}</code></pre>
+      </div>
+    `;
+  }
+
+  function bindCitationActions() {
+    grid.querySelectorAll(".artifact-citation-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const panel = document.getElementById(button.dataset.citationTarget);
+        if (!panel) return;
+
+        const willOpen = panel.hidden;
+        panel.hidden = !willOpen;
+        button.setAttribute("aria-expanded", String(willOpen));
+      });
+    });
+
+    grid.querySelectorAll("[data-copy-citation]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = document.getElementById(button.dataset.copyCitation);
+        if (!target) return;
+
+        try {
+          await navigator.clipboard.writeText(target.textContent);
+          const previous = button.textContent;
+          button.textContent = "Copied";
+          setTimeout(() => { button.textContent = previous; }, 1200);
+        } catch (error) {
+          button.textContent = "Select text";
+        }
+      });
+    });
   }
 
   function render() {
@@ -391,7 +463,7 @@
         <article class="artifact" id="${item.id}">
           <div class="artifact-top">
             <div>
-              <div class="artifact-type">${item.type} · ${item.year}</div>
+              <div class="artifact-type">${item.type}</div>
               <h2>${item.title}</h2>
             </div>
             ${renderVisual(item)}
@@ -400,12 +472,18 @@
           <div class="authors">${item.authors}</div>
           <p>${item.description}</p>
 
+          ${renderVenueTag(item)}
+
           <div class="card-actions">
             ${renderActions(item)}
           </div>
+
+          ${renderCitation(item)}
         </article>
       `).join("");
     }
+
+    bindCitationActions();
 
     const keywordActive = normalize(search.value).length > 0;
     const hasFilters =
