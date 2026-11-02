@@ -27,7 +27,6 @@ window.NEXUS_DATA = {
       "demo": "https://agent-pr-dashboard.vercel.app/",
       "repo": "https://github.com/GurjasChalana/Agent-PR-Dashboard",
       "image": "/images/SecAIDev.png",
-      "venueTag": "EMSE 2026 · Under Review",
       "citation": "@software{ChalanaElish2026SecAIDev,\n  author = {Gurjas Chalana and Karim Elish},\n  title  = {SecAIDev: Security Assurance in Agent-Authored Pull Requests},\n  year   = {2026},\n  url    = {https://agent-pr-dashboard.vercel.app/},\n  note   = {Research software; associated manuscript under review at Empirical Software Engineering}\n}"
     },
     {
