@@ -26,7 +26,9 @@ window.NEXUS_DATA = {
       ],
       "demo": "https://agent-pr-dashboard.vercel.app/",
       "repo": "https://github.com/GurjasChalana/Agent-PR-Dashboard",
-      "image": "/images/SecAIDev.png"
+      "image": "/images/SecAIDev.png",
+      "venueTag": "EMSE 2026 · Under Review",
+      "citation": "@software{ChalanaElish2026SecAIDev,\n  author = {Gurjas Chalana and Karim Elish},\n  title  = {SecAIDev: Security Assurance in Agent-Authored Pull Requests},\n  year   = {2026},\n  url    = {https://agent-pr-dashboard.vercel.app/},\n  note   = {Research software; associated manuscript under review at Empirical Software Engineering}\n}"
     },
     {
       "id": "andrometric",
@@ -54,7 +56,9 @@ window.NEXUS_DATA = {
       ],
       "paper": "https://dl.acm.org/doi/10.1145/3793302.3793329",
       "data": "https://zenodo.org/records/17559667",
-      "image": "/images/AndroMetric.png"
+      "image": "/images/AndroMetric.png",
+      "venueTag": "MSR 2026",
+      "citation": "@inproceedings{SiedlerElish2026AndroMetric,\n  author    = {Sebastian Siedler and Karim Elish},\n  title     = {AndroMetric: Bridging Multi-Dimensional Software Metrics and Mobile Application Security},\n  booktitle = {23rd IEEE/ACM International Conference on Mining Software Repositories (MSR)},\n  pages     = {702--706},\n  year      = {2026},\n  doi       = {10.1145/3793302.3793329}\n}"
     },
     {
       "id": "wearappsec",
@@ -77,9 +81,11 @@ window.NEXUS_DATA = {
         "Software Security",
         "Dataset"
       ],
-      "paper": "https://nexus-software-lab.github.io/artifacts/",
+      "paper": "https://doi.org/10.1109/MIC.2026.3732938",
       "data": "https://ieee-dataport.org/documents/wearappsec-wearable-mobile-app-security-dataset",
-      "image": "/images/WearAppSec.png"
+      "image": "/images/WearAppSec.png",
+      "venueTag": "IEEE IC 2026",
+      "citation": "@article{SiedlerSyllaElish2026Wearable,\n  author  = {Sebastian Siedler and Mohamed Sylla and Karim Elish},\n  title   = {Security Risks in Wearable Mobile Applications},\n  journal = {IEEE Internet Computing},\n  year    = {2026},\n  doi     = {10.1109/MIC.2026.3732938}\n}"
     },
     {
       "id": "smelldroid",
@@ -105,7 +111,9 @@ window.NEXUS_DATA = {
       ],
       "paper": "https://dl.acm.org/doi/10.1145/3793302.3793330",
       "data": "https://zenodo.org/records/17559693",
-      "image": "/images/SMELLDroid.png"
+      "image": "/images/SMELLDroid.png",
+      "venueTag": "MSR 2026",
+      "citation": "@inproceedings{ChampieElishElish2026SMELLDroid,\n  author    = {Joyce Champie and Karim Elish and Mahmoud Elish},\n  title     = {SMELLDroid: A Dataset for Code Smells in Android Apps},\n  booktitle = {23rd IEEE/ACM International Conference on Mining Software Repositories (MSR)},\n  pages     = {707--711},\n  year      = {2026},\n  doi       = {10.1145/3793302.3793330}\n}"
     },
     {
       "id": "mirror",
@@ -131,7 +139,9 @@ window.NEXUS_DATA = {
       ],
       "paper": "https://dl.acm.org/doi/10.1145/3793655.3793713",
       "data": "https://zenodo.org/records/17666395",
-      "image": "/images/MIRROR.png"
+      "image": "/images/MIRROR.png",
+      "venueTag": "FORGE 2026",
+      "citation": "@inproceedings{SiedlerElish2026MIRROR,\n  author    = {Sebastian Siedler and Karim Elish},\n  title     = {MIRROR: A Dataset of Structural Metrics for Repackaged Android Apps},\n  booktitle = {3rd ACM International Conference on AI Foundation Models and Software Engineering (FORGE)},\n  pages     = {223--227},\n  year      = {2026},\n  doi       = {10.1145/3793655.3793713}\n}"
     },
     {
       "id": "mvcdroid",
@@ -157,7 +167,9 @@ window.NEXUS_DATA = {
       ],
       "paper": "https://ieeexplore.ieee.org/document/11641174",
       "data": "https://zenodo.org/records/18633276",
-      "image": "/images/MVCDroid.png"
+      "image": "/images/MVCDroid.png",
+      "venueTag": "ICSA 2026",
+      "citation": "@inproceedings{SyllaElish2026MVC,\n  author    = {Mohamed Sylla and Karim Elish},\n  title     = {Rethinking MVC Violations as Security-Aware Architectural Smells in Android Applications},\n  booktitle = {23rd IEEE International Conference on Software Architecture (ICSA) Companion},\n  pages     = {189--193},\n  year      = {2026}\n}"
     },
     {
       "id": "droidmalvet",
@@ -183,56 +195,30 @@ window.NEXUS_DATA = {
       ],
       "paper": "https://ieeexplore.ieee.org/document/9682574",
       "data": "https://zenodo.org/records/18315281",
-      "image": "/images/DroidMalVet.png"
+      "image": "/images/DroidMalVet.png",
+      "venueTag": "IEEE TC 2022",
+      "citation": "@article{ElishElishAlmohri2022DroidMalVet,\n  author  = {Karim O. Elish and Mahmoud O. Elish and Hussain M. J. Almohri},\n  title   = {Lightweight, Effective Detection and Characterization of Mobile Malware Families},\n  journal = {IEEE Transactions on Computers},\n  volume  = {71},\n  number  = {11},\n  pages   = {2982--2995},\n  year    = {2022},\n  doi     = {10.1109/TC.2022.3143439}\n}"
     }
   ],
   "publications": [
     {
-      "year": 2027,
-      "title": "When LLMs Say Secure: An Empirical Study of False Assurance in Android Vulnerability Detection",
-      "authors": "Joyce Champie and Karim Elish",
-      "venue": "Proceedings of the 49th IEEE/ACM International Conference on Software Engineering (ICSE), Research Track",
-      "areas": [
-        "Software Security & Privacy",
-        "Mobile & Android Security",
-        "Trustworthy AI",
-        "Empirical Software Engineering"
-      ],
-      "topics": [
-        "Large Language Models",
-        "False Assurance",
-        "Vulnerability Detection",
-        "Android Security",
-        "Software Security",
-        "Empirical Study"
-      ],
-      "award": "Direct Acceptance Rate: 5.0% (119/2,375)",
-      "type": "Conference",
-      "citation": "@inproceedings{ChampieElish2027FalseAssurance,\n  author    = {Joyce Champie and Karim Elish},\n  title     = {When LLMs Say Secure: An Empirical Study of False Assurance in Android Vulnerability Detection},\n  booktitle = {49th IEEE/ACM International Conference on Software Engineering (ICSE)},\n  year      = {2027}\n}"
-    },
-    {
       "year": 2026,
       "title": "Security Risks in Wearable Mobile Applications",
       "authors": "Sebastian Siedler, Mohamed Sylla, and Karim Elish",
-      "venue": "IEEE Internet Computing, accepted, September 2026. To appear",
+      "venue": "IEEE Internet Computing, Accepted for publication, September 2026. To appear",
       "areas": [
         "Software Security & Privacy",
         "Mobile & Android Security",
         "Empirical Software Engineering"
       ],
       "topics": [
-        "Wearable Security",
+        "Wearables",
         "Mobile Security",
         "Android",
         "Software Security",
         "OWASP MASVS",
-        "Security Assessment",
         "Empirical Study"
-      ],
-      "type": "Journal",
-      "paper": "https://doi.org/10.1109/MIC.2026.3732938",
-      "data": "https://ieee-dataport.org/documents/wearappsec-wearable-mobile-app-security-dataset",
-      "citation": "@article{SiedlerSyllaElish2026Wearable,\n  author  = {Sebastian Siedler and Mohamed Sylla and Karim Elish},\n  title   = {Security Risks in Wearable Mobile Applications},\n  journal = {IEEE Internet Computing},\n  year    = {2026},\n  doi     = {10.1109/MIC.2026.3732938}\n}"
+      ]
     },
     {
       "year": 2026,
@@ -241,7 +227,6 @@ window.NEXUS_DATA = {
       "venue": "IEEE Access, vol. 14, pp. 52734–52752",
       "areas": [
         "Malware & Vulnerability Analysis",
-        "Software Security & Privacy",
         "Trustworthy AI"
       ],
       "topics": [
@@ -250,10 +235,7 @@ window.NEXUS_DATA = {
         "Malware Analysis",
         "AI for Security",
         "Systematic Review"
-      ],
-      "type": "Journal",
-      "paper": "https://doi.org/10.1109/ACCESS.2026.3680058",
-      "citation": "@article{ChampieElish2026LLMMalwareReview,\n  author  = {Joyce Champie and Karim Elish},\n  title   = {Large Language Models for Malware Detection: A Systematic Review, Taxonomy, and Open Challenges},\n  journal = {IEEE Access},\n  volume  = {14},\n  pages   = {52734--52752},\n  year    = {2026},\n  doi     = {10.1109/ACCESS.2026.3680058}\n}"
+      ]
     },
     {
       "year": 2026,
@@ -266,14 +248,12 @@ window.NEXUS_DATA = {
       ],
       "topics": [
         "Privacy",
-        "Data Anonymization",
+        "Anonymization",
         "Large Language Models",
         "Behavioral Leakage",
-        "Quasi-Identifiers"
-      ],
-      "type": "Workshop",
-      "paper": "https://doi.org/10.1145/3806007.3810967",
-      "citation": "@inproceedings{DmytrykEtAl2026STALKER,\n  author    = {Anastasiya Dmytryk and Sami El-Yaagoubi and Lucas Batista and Philipp Kouterguine and Samuel Gerken and Abdulaziz Alhamadani and Karim Elish},\n  title     = {STALKER: Composed Quasi-Identifiers and LLM-Amplified Behavioral Leakage in Anonymized Marketplace Data},\n  booktitle = {12th ACM International Workshop on Security and Privacy Analytics (IWSPA)},\n  year      = {2026},\n  doi       = {10.1145/3806007.3810967}\n}"
+        "Quasi-Identifiers",
+        "Marketplace Data"
+      ]
     },
     {
       "year": 2026,
@@ -283,7 +263,6 @@ window.NEXUS_DATA = {
       "areas": [
         "Software Security & Privacy",
         "Mobile & Android Security",
-        "Software Quality & Metrics",
         "Software Analysis & Analytics"
       ],
       "topics": [
@@ -294,11 +273,7 @@ window.NEXUS_DATA = {
         "Code Smells",
         "Software Assurance"
       ],
-      "award": "Distinguished Paper Award Candidate",
-      "type": "Conference",
-      "paper": "https://ieeexplore.ieee.org/document/11641174",
-      "data": "https://zenodo.org/records/18633276",
-      "citation": "@inproceedings{SyllaElish2026MVC,\n  author    = {Mohamed Sylla and Karim Elish},\n  title     = {Rethinking MVC Violations as Security-Aware Architectural Smells in Android Applications},\n  booktitle = {23rd IEEE International Conference on Software Architecture (ICSA) Companion},\n  pages     = {189--193},\n  year      = {2026}\n}"
+      "award": "Distinguished Paper Award Candidate"
     },
     {
       "year": 2026,
@@ -307,6 +282,7 @@ window.NEXUS_DATA = {
       "venue": "Proceedings of the 19th IEEE International Conference on Software Testing, Verification and Validation (ICST)",
       "areas": [
         "AI-Assisted Software Engineering",
+        "Mobile & Android Security",
         "Empirical Software Engineering"
       ],
       "topics": [
@@ -316,10 +292,7 @@ window.NEXUS_DATA = {
         "Android",
         "Software Testing",
         "Empirical Study"
-      ],
-      "type": "Conference",
-      "paper": "https://doi.org/10.1109/ICST69053.2026.00057",
-      "citation": "@inproceedings{CareyElishAbedin2026BugReproduction,\n  author    = {Dennis Carey and Karim Elish and Paniz Abedin},\n  title     = {Automated Reproduction of Android Application Bugs with LLMs: Are We There Yet?},\n  booktitle = {19th IEEE International Conference on Software Testing, Verification and Validation (ICST)},\n  pages     = {376--380},\n  year      = {2026},\n  doi       = {10.1109/ICST69053.2026.00057}\n}"
+      ]
     },
     {
       "year": 2026,
@@ -340,12 +313,9 @@ window.NEXUS_DATA = {
         "Android",
         "Malware Risk",
         "Software Analytics",
+        "Empirical Study",
         "Dataset"
-      ],
-      "type": "Conference",
-      "paper": "https://doi.org/10.1145/3793302.3793329",
-      "data": "https://zenodo.org/records/17559667",
-      "citation": "@inproceedings{SiedlerElish2026AndroMetric,\n  author    = {Sebastian Siedler and Karim Elish},\n  title     = {AndroMetric: Bridging Multi-Dimensional Software Metrics and Mobile Application Security},\n  booktitle = {23rd IEEE/ACM International Conference on Mining Software Repositories (MSR)},\n  pages     = {702--706},\n  year      = {2026},\n  doi       = {10.1145/3793302.3793329}\n}"
+      ]
     },
     {
       "year": 2026,
@@ -355,6 +325,7 @@ window.NEXUS_DATA = {
       "areas": [
         "Software Quality & Metrics",
         "Software Analysis & Analytics",
+        "Mobile & Android Security",
         "Empirical Software Engineering"
       ],
       "topics": [
@@ -363,12 +334,9 @@ window.NEXUS_DATA = {
         "Maintainability",
         "Android",
         "Software Analytics",
+        "Empirical Study",
         "Dataset"
-      ],
-      "type": "Conference",
-      "paper": "https://doi.org/10.1145/3793302.3793330",
-      "data": "https://zenodo.org/records/17559693",
-      "citation": "@inproceedings{ChampieElishElish2026SMELLDroid,\n  author    = {Joyce Champie and Karim Elish and Mahmoud Elish},\n  title     = {SMELLDroid: A Dataset for Code Smells in Android Apps},\n  booktitle = {23rd IEEE/ACM International Conference on Mining Software Repositories (MSR)},\n  pages     = {707--711},\n  year      = {2026},\n  doi       = {10.1145/3793302.3793330}\n}"
+      ]
     },
     {
       "year": 2026,
@@ -386,13 +354,10 @@ window.NEXUS_DATA = {
         "Structural Metrics",
         "Software Metrics",
         "Android",
+        "Software Analytics",
         "Software Reuse",
         "Dataset"
-      ],
-      "type": "Conference",
-      "paper": "https://doi.org/10.1145/3793655.3793713",
-      "data": "https://zenodo.org/records/17666395",
-      "citation": "@inproceedings{SiedlerElish2026MIRROR,\n  author    = {Sebastian Siedler and Karim Elish},\n  title     = {MIRROR: A Dataset of Structural Metrics for Repackaged Android Apps},\n  booktitle = {3rd ACM International Conference on AI Foundation Models and Software Engineering (FORGE)},\n  pages     = {223--227},\n  year      = {2026},\n  doi       = {10.1145/3793655.3793713}\n}"
+      ]
     },
     {
       "year": 2025,
@@ -404,15 +369,12 @@ window.NEXUS_DATA = {
         "Malware & Vulnerability Analysis"
       ],
       "topics": [
-        "Repackaging",
+        "Repackaged Apps",
         "Android",
         "Mobile Security",
         "Malware Detection",
         "Machine Learning"
-      ],
-      "type": "Journal",
-      "paper": "https://doi.org/10.3390/info16121075",
-      "citation": "@article{LeadonElish2025RepackDroid,\n  author  = {Tito Leadon and Karim Elish},\n  title   = {RepackDroid: An Efficient Detection Model for Repackaged Android Applications},\n  journal = {Information},\n  volume  = {16},\n  number  = {12},\n  pages   = {1075},\n  year    = {2025},\n  doi     = {10.3390/info16121075}\n}"
+      ]
     },
     {
       "year": 2025,
@@ -427,12 +389,10 @@ window.NEXUS_DATA = {
       "topics": [
         "Android Malware",
         "Ransomware",
+        "SMALI",
         "Malware Detection",
-        "Static Analysis",
-        "SMALI"
-      ],
-      "type": "Conference",
-      "citation": "@inproceedings{SeixasElish2025Ransomware,\n  author    = {Vinicius Seixas and Karim Elish},\n  title     = {High-Accuracy Android Ransomware Detection Using SMALI Code-Based Analysis},\n  booktitle = {IEEE International Conference on Artificial Intelligence, Computer, Data Sciences and Applications (ACDSA)},\n  pages     = {1--6},\n  year      = {2025}\n}"
+        "Static Analysis"
+      ]
     },
     {
       "year": 2025,
@@ -446,13 +406,11 @@ window.NEXUS_DATA = {
       "topics": [
         "Android Malware",
         "Remote Access Trojans",
+        "RATs",
         "Malware Detection",
         "Ensemble Learning",
         "Machine Learning"
-      ],
-      "type": "Conference",
-      "paper": "https://ieeexplore.ieee.org/document/11154598/",
-      "citation": "@inproceedings{DalhyElish2025RATs,\n  author    = {Nesreen Dalhy and Karim Elish},\n  title     = {Stealthy No More: An Effective Ensemble Learning Approach for Detecting Android RATs},\n  booktitle = {IEEE/ACIS 23rd International Conference on Software Engineering Research, Management and Applications (SERA)},\n  pages     = {194--200},\n  year      = {2025},\n  doi       = {10.1109/SERA65747.2025.11154598}\n}"
+      ]
     },
     {
       "year": 2025,
@@ -460,8 +418,8 @@ window.NEXUS_DATA = {
       "authors": "Ayesha Dina, Colby Edell, Karim Elish, and Arijet Sarker",
       "venue": "Proceedings of the 38th International FLAIRS Conference, Florida Artificial Intelligence Research Society (FLAIRS)",
       "areas": [
-        "Software Security & Privacy",
-        "Trustworthy AI"
+        "Trustworthy AI",
+        "Software Security & Privacy"
       ],
       "topics": [
         "Intrusion Detection",
@@ -470,10 +428,7 @@ window.NEXUS_DATA = {
         "Prototypical Networks",
         "Transfer Learning",
         "AI for Security"
-      ],
-      "type": "Conference",
-      "paper": "https://doi.org/10.32473/flairs.38.1.138952",
-      "citation": "@inproceedings{DinaEtAl2025FSProtoTransfer,\n  author    = {Ayesha Dina and Colby Edell and Karim Elish and Arijet Sarker},\n  title     = {FSProtoTransfer: Synergizing Few-Shot, Prototypical Networks, and Transfer Learning for Intrusion Detection in VANETs},\n  booktitle = {38th International Florida Artificial Intelligence Research Society Conference (FLAIRS)},\n  year      = {2025},\n  doi       = {10.32473/flairs.38.1.138952}\n}"
+      ]
     },
     {
       "year": 2022,
@@ -492,11 +447,7 @@ window.NEXUS_DATA = {
         "Code Metrics",
         "Software Metrics",
         "Android"
-      ],
-      "type": "Journal",
-      "paper": "https://doi.org/10.1109/TC.2022.3143439",
-      "data": "https://zenodo.org/records/18315281",
-      "citation": "@article{ElishElishAlmohri2022DroidMalVet,\n  author  = {Karim O. Elish and Mahmoud O. Elish and Hussain M. J. Almohri},\n  title   = {Lightweight, Effective Detection and Characterization of Mobile Malware Families},\n  journal = {IEEE Transactions on Computers},\n  volume  = {71},\n  number  = {11},\n  pages   = {2982--2995},\n  year    = {2022},\n  doi     = {10.1109/TC.2022.3143439}\n}"
+      ]
     },
     {
       "year": 2020,
@@ -515,10 +466,7 @@ window.NEXUS_DATA = {
         "Program Analysis",
         "Data Flow",
         "Software Security"
-      ],
-      "type": "Journal",
-      "paper": "https://doi.org/10.1109/TMC.2018.2889495",
-      "citation": "@article{ElishEtAl2020InterApp,\n  author  = {Karim O. Elish and Haipeng Cai and Daniel Barton and Danfeng Yao and Barbara G. Ryder},\n  title   = {Identifying Mobile Inter-App Communication Risks},\n  journal = {IEEE Transactions on Mobile Computing},\n  volume  = {19},\n  number  = {1},\n  pages   = {90--102},\n  year    = {2020},\n  doi     = {10.1109/TMC.2018.2889495}\n}"
+      ]
     },
     {
       "year": 2019,
@@ -538,17 +486,14 @@ window.NEXUS_DATA = {
         "Malware Detection",
         "Android",
         "Software Analytics"
-      ],
-      "type": "Conference",
-      "paper": "https://doi.org/10.1109/BigData47090.2019.9005669",
-      "citation": "@inproceedings{BlancEtAl2019AndroidMetrics,\n  author    = {William Blanc and Lina G. Hashem and Karim O. Elish and M. J. Hussain Almohri},\n  title     = {Identifying Android Malware Families Using Android-Oriented Metrics},\n  booktitle = {2019 IEEE International Conference on Big Data (Big Data)},\n  pages     = {4708--4713},\n  year      = {2019},\n  doi       = {10.1109/BigData47090.2019.9005669}\n}"
+      ]
     }
   ],
   "people": {
     "current": [
       {
         "name": "Mohamed Sylla",
-        "role": "Master's Student · Fulbright Graduate Fellow",
+        "role": "Master's Student · Fulbright",
         "photo": "/assets/img/people/Sylla.png"
       },
       {
@@ -568,23 +513,8 @@ window.NEXUS_DATA = {
       },
       {
         "name": "Justine Bailey",
-        "role": "Applied Research Intern · PRISM Fellow",
+        "role": "Undergraduate Researcher",
         "photo": "/assets/img/people/Justine.png"
-      },
-      {
-        "name": "Aidan Guenther",
-        "role": "Applied Research Intern · PRISM Fellow",
-        "photo": "/assets/img/people/Aidan_Guenther.png"
-      },
-      {
-        "name": "Anthony Zapata",
-        "role": "Applied Research Intern · PRISM Fellow",
-        "photo": "/assets/img/people/Anthony_Zapata.png"
-      },
-      {
-        "name": "Samuel Gerken",
-        "role": "Applied Research Intern · PRISM Fellow",
-        "photo": "/assets/img/people/Samuel_Gerken.png"
       }
     ],
     "alumni": [
