@@ -33,7 +33,7 @@
       ],
       demo: "https://agent-pr-dashboard.vercel.app/",
       repo: "https://github.com/GurjasChalana/Agent-PR-Dashboard",
-      venueTag: "EMSE 2026 · Under Review",
+      venueTag: <!-- "EMSE 2026 · Under Review" -->,
       citation: `@software{ChalanaElish2026SecAIDev,
   author = {Gurjas Chalana and Karim Elish},
   title  = {SecAIDev: Security Assurance in Agent-Authored Pull Requests},
