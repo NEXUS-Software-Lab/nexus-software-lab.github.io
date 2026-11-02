@@ -272,9 +272,9 @@
   }
 
 .artifact-visual {
-  width: 104px;
-  height: 104px;
-  flex: 0 0 104px;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
   border: 1px solid #e0e9f2;
   border-radius: 15px;
   background: #ffffff;
@@ -287,22 +287,22 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 10px;
+  padding: 9px;
 }
 
 
   /* Shared artifact-type visuals */
   .artifact-type-image {
     display: block;
-    width: 82px;
-    height: 82px;
+    width: 66px;
+    height: 66px;
     object-fit: contain;
   }
 
   @media (max-width: 760px) {
     .artifact-type-image {
-      width: 58px;
-      height: 58px;
+      width: 46px;
+      height: 46px;
     }
   }
 
@@ -380,9 +380,9 @@
     }
 
     .artifact-visual {
-      width: 70px;
-      height: 70px;
-      flex-basis: 70px;
+      width: 60px;
+      height: 60px;
+      flex-basis: 60px;
     }
   }
 
@@ -471,6 +471,18 @@
 
     .artifact-citation-panel pre {
       font-size: .72rem;
+    }
+  }
+
+
+  /* Slightly more breathing room between artifact text and visual. */
+  .artifact-top {
+    gap: 22px;
+  }
+
+  @media (max-width: 760px) {
+    .artifact-top {
+      gap: 14px;
     }
   }
 
