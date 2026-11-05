@@ -445,6 +445,7 @@ window.NEXUS_DATA = {
         "SMALI"
       ],
       "type": "Conference",
+      "paper": "https://ieeexplore.ieee.org/document/11166547",
       "citation": "@inproceedings{SeixasElish2025Ransomware,\n  author    = {Vinicius Seixas and Karim Elish},\n  title     = {High-Accuracy Android Ransomware Detection Using SMALI Code-Based Analysis},\n  booktitle = {IEEE International Conference on Artificial Intelligence, Computer, Data Sciences and Applications (ACDSA)},\n  pages     = {1--6},\n  year      = {2025}\n}"
     },
     {
